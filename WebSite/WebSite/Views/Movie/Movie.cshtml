@@ -1,0 +1,31 @@
+﻿@model WebSite.Models.Movie
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Movie</title>
+</head>
+<body>
+    <div>
+        <p>Назва фільму: @Model.Name</p>
+        <p>Рік показу: @Model.Year</p>
+        <p>
+            Жанр: @Model.Genre
+        </p>
+        <p>
+            Режисер: @Model.Author
+        </p>
+        <p>
+            Актори:
+            @for (var i = 0; i < @Model.Cast.Count; i++)
+            {<p>@Model.Cast[i]</p> 
+            }
+        </p>
+        <p>Опис фільму: @Model.Description</p>
+    </div>
+</body>
+</html>
