@@ -1,0 +1,25 @@
+﻿@model WebSite.Models.Event
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <p> <b>Кінотеатр:</b> @Model.Cinema</p>
+        <p> <b>Фільм:</b> @Model.Movie</p>
+        @if (@Model.IsApproved)
+        { <p> <b>Статус:</b> Затверджено </p>}
+        else
+        { <p> <b>Статус:</b> Розглядається </p>}
+        <p> <b>Користувач, що запропонував:</b> @Model.Author</p>
+        <p> <b>Ціна:</b> @Model.Price грн</p>
+    </div>
+</body>
+</html>

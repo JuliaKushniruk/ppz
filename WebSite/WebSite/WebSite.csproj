@@ -139,7 +139,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Login\LoginPage.cshtml" />
-    <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Event\Event.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
