@@ -7,8 +7,8 @@ namespace WebSite.Models
 {
     public class Event
     {
-        public string Cinema;
-        public string Movie;
+        public Cinema Cinema;
+        public Movie Movie;
         public string Author;
         public bool IsApproved;
         public double Price;

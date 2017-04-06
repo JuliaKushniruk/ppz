@@ -12,8 +12,8 @@
 </head>
 <body>
     <div> 
-        <p> <b>Кінотеатр:</b> @Model.Cinema</p>
-        <p> <b>Фільм:</b> @Model.Movie</p>
+        <p> <b>Кінотеатр:</b> @Model.Cinema.Name</p>
+        <p> <b>Фільм:</b> @Model.Movie.Name</p>
         @if (@Model.IsApproved)
         { <p> <b>Статус:</b> Затверджено </p>}
         else

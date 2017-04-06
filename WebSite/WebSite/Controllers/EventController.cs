@@ -13,8 +13,10 @@ namespace WebSite.Controllers
         {
             Models.Event movieEvent = new Models.Event();
             movieEvent.Author = "Julia";
-            movieEvent.Cinema = "Movie palace";
-            movieEvent.Movie = "Midnight in Paris";
+            movieEvent.Cinema = new Models.Cinema();
+            movieEvent.Cinema.Name = "Movie Palace";
+            movieEvent.Movie = new Models.Movie();
+            movieEvent.Movie.Name = "Midnight in Paris";
             movieEvent.IsApproved = true;
             movieEvent.Price = 40;
             return View("Event", movieEvent);
