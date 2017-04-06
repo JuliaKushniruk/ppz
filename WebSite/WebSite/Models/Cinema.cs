@@ -12,7 +12,7 @@ namespace WebSite.Models
         private string description;
         private string address;
         private Seats seats;
-        private List<string> events; //string = Event
+        private List<Event> events;
     }
 
     public class Seats
