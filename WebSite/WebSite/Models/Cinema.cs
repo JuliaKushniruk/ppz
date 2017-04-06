@@ -8,11 +8,11 @@ namespace WebSite.Models
 {
     public class Cinema
     {
-        private string name;
-        private string description;
-        private string address;
-        private Seats seats;
-        private List<Event> events;
+        public string Name;
+        public string Description;
+        public string Address;
+        public Seats Seats;
+        public List<Event> Events;
     }
 
     public class Seats

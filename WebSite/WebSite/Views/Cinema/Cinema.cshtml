@@ -1,4 +1,4 @@
-﻿
+﻿@model WebSite.Models.Cinema
 @{
     Layout = null;
 }
@@ -11,8 +11,15 @@
     <title>Cinema</title>
 </head>
 <body>
-    <div> 
-        kjkjkjkj
-    </div>
+    <h1>@Model.Name</h1>
+    <p>@Model.Description</p>
+    <p>@Model.Seats</p>
+    <ul>
+        @foreach (var item in Model.Events)
+        {
+            <li>@item.Movie</li>
+        }
+    </ul>
+    <p>@Model.Address</p>
 </body>
 </html>
