@@ -9,7 +9,7 @@ namespace WebSite.Controllers
     public class EventController : Controller
     {
         // GET: Event
-        public ViewResult Index()
+        /*public ActionResult Index(int a)
         {
             Models.Event movieEvent = new Models.Event();
             movieEvent.Author = "Julia";
@@ -20,6 +20,33 @@ namespace WebSite.Controllers
             movieEvent.IsApproved = true;
             movieEvent.Price = 40;
             return View("Event", movieEvent);
+        }*/
+
+        public ActionResult ViewEvent(Models.Event a = null)
+        {
+                Models.Event movieEvent = new Models.Event();
+                movieEvent.Author = "Julia";
+                movieEvent.Cinema = new Models.Cinema();
+                movieEvent.Cinema.Name = "Movie Palace";
+                movieEvent.Movie = new Models.Movie();
+                movieEvent.Movie.Name = "Midnight in Paris";
+                movieEvent.IsApproved = true;
+                movieEvent.Price = 40;
+                return View("Event", movieEvent);
+            
         }
+
+        /*[HttpGet]
+        public ViewResult Event()
+        {
+            return View();
+        }*/
+        /*[HttpPost]
+        public ViewResult f(Models.Event guestResponse)
+        {
+            //TODO: add model validation (e.g. model.IsValid)
+
+            return View("Event", guestResponse);
+        }*/
     }
 }

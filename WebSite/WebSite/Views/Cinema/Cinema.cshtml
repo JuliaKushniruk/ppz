@@ -2,6 +2,7 @@
 @{
     Layout = null;
 }
+@using WebSite.HtmlHelpers;
 
 <!DOCTYPE html>
 
@@ -13,13 +14,18 @@
 <body>
     <h1>@Model.Name</h1>
     <p>@Model.Description</p>
-    <p>@Model.Seats.Count</p>
+    <p>Seats count: @Model.Seats.Count</p>
     <ul>
+        
         @foreach (var item in Model.Events)
         {
-            <li>@item.Movie.Name</li>
+            Html.EventLinks(item);
+        }
+        @for (int i = 0; i < Model.Events.Count; i++)
+        {
+            <li>@Html.ActionLink(Model.Events[i].Movie.Name, "ViewEvent", "Event", i, null) </li>
         }
     </ul>
-    <p>@Model.Address</p>
+    <p>Address: @Model.Address</p>
 </body>
 </html>

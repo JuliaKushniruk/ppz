@@ -131,6 +131,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Cinema.cs" />
     <Compile Include="Models\Event.cs" />

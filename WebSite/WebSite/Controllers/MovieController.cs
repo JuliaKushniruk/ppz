@@ -10,7 +10,7 @@ namespace WebSite.Controllers
     public class MovieController : Controller
     {
         // GET: Movie
-        public ActionResult Index()
+        public ActionResult ViewMovie()
         {
             Movie newMovie = new Movie();
             newMovie.Name = "RoKi";
@@ -19,6 +19,7 @@ namespace WebSite.Controllers
             newMovie.Author = "Avildsen";
             newMovie.Cast = new List<string> { "Stalone", "Vesers" };
             newMovie.Description = "Cool movie";
+
             return View("Movie" , newMovie);
         }
     }
