@@ -13,13 +13,7 @@
 <body>
     <h1>@Model.Name</h1>
     <p>@Model.Description</p>
-    <p>@Model.Seats.Count</p>
-    <ul>
-        @foreach (var item in Model.Events)
-        {
-            <li>@item.Movie.Name</li>
-        }
-    </ul>
+    
     <p>@Model.Address</p>
 </body>
 </html>

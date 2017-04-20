@@ -11,7 +11,7 @@ namespace WebSite.Controllers
         // GET: Cinema
         public ActionResult Index()
         {
-            Models.Cinema cinema = new Models.Cinema();
+          /*  Models.Cinema cinema = new Models.Cinema();
             cinema.Name = "Planeta Kino";
             cinema.Description = "This is Planeta Kino cinema in FORUM LVIV";
             cinema.Address = "vul. Pid dubom 7b";
@@ -38,8 +38,8 @@ namespace WebSite.Controllers
 
             cinema.Events.Add(movieEvent1);
             cinema.Events.Add(movieEvent2);
-
-            return View("Cinema", cinema);
+            */
+            return View("Cinema");
         }
     }
 }

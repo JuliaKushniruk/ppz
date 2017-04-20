@@ -11,15 +11,15 @@ namespace WebSite.Controllers
         // GET: Event
         public ViewResult Index()
         {
-            Models.Event movieEvent = new Models.Event();
+           /* Models.Event movieEvent = new Models.Event();
             movieEvent.Author = "Julia";
             movieEvent.Cinema = new Models.Cinema();
             movieEvent.Cinema.Name = "Movie Palace";
             movieEvent.Movie = new Models.Movie();
             movieEvent.Movie.Name = "Midnight in Paris";
             movieEvent.IsApproved = true;
-            movieEvent.Price = 40;
-            return View("Event", movieEvent);
+            movieEvent.Price = 40;*/
+            return View("Event");
         }
     }
 }

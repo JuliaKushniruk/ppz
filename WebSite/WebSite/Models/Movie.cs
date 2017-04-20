@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace WebSite.Models
 {
     public class Movie
     {
-        public string Name;
-        public int Year;
-        public string Genre;
-        public string Author;
-        public List<string> Cast;
-        public string Description;
+        [Key]
+        public int MovieId { get; set; }
+        public string Name { get; set; }
+        public int Year { get; set; }
+        public string Genre { get; set; }
+        public string Author { get; set; }
+        public string Cast { get; set; }
+        public string Description { get; set; }
     }
 }
