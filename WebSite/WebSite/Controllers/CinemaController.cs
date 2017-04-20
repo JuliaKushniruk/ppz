@@ -9,7 +9,7 @@ namespace WebSite.Controllers
     public class CinemaController : Controller
     {
         // GET: Cinema
-        public ActionResult Index()
+        public ActionResult ViewCinema()
         {
           /*  Models.Cinema cinema = new Models.Cinema();
             cinema.Name = "Planeta Kino";
@@ -20,8 +20,7 @@ namespace WebSite.Controllers
 
             Models.Event movieEvent1 = new Models.Event();
             movieEvent1.Author = "Julia";
-            movieEvent1.Cinema = new Models.Cinema();
-            movieEvent1.Cinema.Name =  "Forum Lviv";
+            movieEvent1.Cinema = cinema;
             movieEvent1.Movie = new Models.Movie();
             movieEvent1.Movie.Name = "Midnight in Paris";
             movieEvent1.IsApproved = true;
@@ -29,8 +28,7 @@ namespace WebSite.Controllers
 
             Models.Event movieEvent2 = new Models.Event();
             movieEvent2.Author = "Yuriy";
-            movieEvent2.Cinema = new Models.Cinema();
-            movieEvent2.Cinema.Name = "Forum Lviv";
+            movieEvent2.Cinema = cinema;
             movieEvent2.Movie = new Models.Movie();
             movieEvent2.Movie.Name = "Free to play";
             movieEvent2.IsApproved = true;
@@ -41,5 +39,13 @@ namespace WebSite.Controllers
             */
             return View("Cinema");
         }
+
+        /*[HttpPost]
+        public ActionResult OpenEvent(Models.Event selectedEvent)
+        {
+            //TODO: add model validation (e.g. model.IsValid)
+            Console.Write("ddf");
+            return RedirectToAction("Event", "Event", selectedEvent);
+        }*/
     }
 }

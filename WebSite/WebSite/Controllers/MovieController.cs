@@ -13,9 +13,10 @@ namespace WebSite.Controllers
     {
         MainRepository repository = new MainRepository();
         // GET: Movie
-        public ActionResult Index()
+        public ActionResult ViewMovie()
         {
             Movie newMovie = repository.Movies.First<Movie>();
+
             return View("Movie" , newMovie);
         }
     }

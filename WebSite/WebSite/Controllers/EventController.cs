@@ -9,7 +9,7 @@ namespace WebSite.Controllers
     public class EventController : Controller
     {
         // GET: Event
-        public ViewResult Index()
+        public ActionResult Index(int a)
         {
            /* Models.Event movieEvent = new Models.Event();
             movieEvent.Author = "Julia";
@@ -21,5 +21,18 @@ namespace WebSite.Controllers
             movieEvent.Price = 40;*/
             return View("Event");
         }
+
+        /*[HttpGet]
+        public ViewResult Event()
+        {
+            return View();
+        }*/
+        /*[HttpPost]
+        public ViewResult f(Models.Event guestResponse)
+        {
+            //TODO: add model validation (e.g. model.IsValid)
+
+            return View("Event", guestResponse);
+        }*/
     }
 }
