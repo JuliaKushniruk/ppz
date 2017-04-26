@@ -137,6 +137,9 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="Controllers\RegisterCinemaController.cs" />
+    <Compile Include="Controllers\RegisterEventController.cs" />
+    <Compile Include="Controllers\SearchCinemaController.cs" />
     <Compile Include="Entities\CinemasSiteContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -145,6 +148,8 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Cinema.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\RegisterEventModel.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +162,9 @@
     <Content Include="Views\Movie\Movie.cshtml" />
     <Content Include="Views\Cinema\Cinema.cshtml" />
     <Content Include="Views\Event\Event.cshtml" />
+    <Content Include="Views\SearchCinema\Search.cshtml" />
+    <Content Include="Views\RegisterEvent\RegisterEvent.cshtml" />
+    <Content Include="Views\RegisterCinema\RegisterCinema.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

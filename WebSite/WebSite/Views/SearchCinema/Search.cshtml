@@ -1,0 +1,29 @@
+﻿@model WebSite.Models.SearchModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+</head>
+<body>
+    <div> 
+@using (Html.BeginForm())
+{
+    <p>Cinema name: @Html.TextBoxFor(x => x.Name) </p>
+    <input type="submit" value="GO" />
+}
+        @foreach(var cinema in Model.CinemasFound)
+        {
+            <p>@Html.ActionLink(@cinema.Name, "ViewCinema", "Cinema",new { cinemaId = cinema.CinemaId} , null) </p>
+            <p>@cinema.CinemaId</p>
+            <p>@cinema.Address</p>
+        }
+
+    </div>
+</body>
+</html>

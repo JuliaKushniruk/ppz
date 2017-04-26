@@ -17,7 +17,7 @@ namespace WebSite.Controllers
         {
             Movie newMovie = repository.Movies.First<Movie>();
 
-            return View("Movie" , newMovie);
+            return View("Movie", newMovie);
         }
     }
 }

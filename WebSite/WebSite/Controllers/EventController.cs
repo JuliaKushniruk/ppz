@@ -3,23 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebSite.Concrete;
+using WebSite.Models;
 
 namespace WebSite.Controllers
 {
     public class EventController : Controller
     {
+        MainRepository repository = new MainRepository();
         // GET: Event
-        public ActionResult Index(int a)
+
+        public ActionResult ViewEvent()
         {
-           /* Models.Event movieEvent = new Models.Event();
-            movieEvent.Author = "Julia";
-            movieEvent.Cinema = new Models.Cinema();
-            movieEvent.Cinema.Name = "Movie Palace";
-            movieEvent.Movie = new Models.Movie();
-            movieEvent.Movie.Name = "Midnight in Paris";
-            movieEvent.IsApproved = true;
-            movieEvent.Price = 40;*/
-            return View("Event");
+            Event newEvent = repository.Events.First<Event>();
+            return View("Event", newEvent);
         }
 
         /*[HttpGet]

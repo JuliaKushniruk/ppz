@@ -1,0 +1,27 @@
+﻿@model WebSite.Models.RegisterEventModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegisterEvent</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <p>Movie name: @Html.TextBoxFor(x => x.Movie.Name) </p>
+            <p>Year : @Html.TextBoxFor(x => x.Movie.Year)</p>
+            <p>Genre : @Html.TextBoxFor(x => x.Movie.Genre)</p>
+            <p>Author : @Html.TextBoxFor(x => x.Movie.Author) </p>
+            <p>Cast : @Html.TextBoxFor(x => x.Movie.Cast) </p>
+            <p>Description : @Html.TextBoxFor(x => x.Movie.Description) </p>
+            <input type="submit" value="Confirm" />
+        }
+    </div>
+</body>
+</html>

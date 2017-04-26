@@ -1,0 +1,26 @@
+﻿@model WebSite.Models.Cinema
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegisterEvent</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <p>Cinema name: @Html.TextBoxFor(x => x.Name) </p>
+            <p>Description : @Html.TextBoxFor(x => x.Description) </p>
+            <p>Address : @Html.TextBoxFor(x => x.Address)</p>
+            <p>Rows : @Html.TextBoxFor(x => x.Rows)</p>
+            <p>Seats : @Html.TextBoxFor(x => x.Seats) </p>
+            <input type="submit" value="Confirm" />
+        }
+    </div>
+</body>
+</html>
