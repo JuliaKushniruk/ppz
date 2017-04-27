@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebSite.Models;
-using WebSite.Entities;
+using WebSite.Infrastructure;
 using WebSite.Concrete;
 
 namespace WebSite.Controllers
