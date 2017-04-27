@@ -1,6 +1,6 @@
 ﻿@model WebSite.Models.SearchModel
 @{
-    Layout = null;
+
 }
 
 <!DOCTYPE html>
@@ -14,8 +14,13 @@
     <div> 
 @using (Html.BeginForm())
 {
-    <p>Cinema name: @Html.TextBoxFor(x => x.Name) </p>
-    <input type="submit" value="GO" />
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="searchText">Cinema name:</label>
+        <div class="col-lg-10">
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "hyi", id = "searchText" })
+        </div>
+        <input type="submit" value="GO" class="btn btn-success" />
+    </div>
 }
         @foreach(var cinema in Model.CinemasFound)
         {
