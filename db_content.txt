@@ -1,0 +1,27 @@
+SET IDENTITY_INSERT [dbo].[Cinemas] ON
+INSERT INTO [dbo].[Cinemas] ([CinemaId], [Name], [Description], [Address], [Rows], [Seats]) VALUES (1, N'Cinema Hall', N'The most modern cinema you''ve ever seen.', N'Times Square 21,7', 20, 30)
+INSERT INTO [dbo].[Cinemas] ([CinemaId], [Name], [Description], [Address], [Rows], [Seats]) VALUES (2, N'Kopernik', N'Old good cinema.', N'Teatralna str. 21', 30, 20)
+INSERT INTO [dbo].[Cinemas] ([CinemaId], [Name], [Description], [Address], [Rows], [Seats]) VALUES (3, N'Event Hall KINO', N'Club''n''Movie', N'Nekrasova 22', 50, 30)
+SET IDENTITY_INSERT [dbo].[Cinemas] OFF
+
+
+SET IDENTITY_INSERT [dbo].[Events] ON
+INSERT INTO [dbo].[Events] ([EventId], [CinemaId], [MovieId], [Author], [IsApproved], [Price]) VALUES (1, 1, 2, N'Yura', 0, 50)
+INSERT INTO [dbo].[Events] ([EventId], [CinemaId], [MovieId], [Author], [IsApproved], [Price]) VALUES (2, 2, 5, N'Yarko', 1, 100)
+INSERT INTO [dbo].[Events] ([EventId], [CinemaId], [MovieId], [Author], [IsApproved], [Price]) VALUES (5, 3, 4, N'Yuliya', 1, 75)
+INSERT INTO [dbo].[Events] ([EventId], [CinemaId], [MovieId], [Author], [IsApproved], [Price]) VALUES (6, 0, 0, N'Yura', 0, 0)
+INSERT INTO [dbo].[Events] ([EventId], [CinemaId], [MovieId], [Author], [IsApproved], [Price]) VALUES (7, 0, 7, N'Yarko', 0, 0)
+INSERT INTO [dbo].[Events] ([EventId], [CinemaId], [MovieId], [Author], [IsApproved], [Price]) VALUES (8, 1, 8, N'Yarko', 0, 0)
+INSERT INTO [dbo].[Events] ([EventId], [CinemaId], [MovieId], [Author], [IsApproved], [Price]) VALUES (9, 1, 10, N'Yarko', 0, 0)
+SET IDENTITY_INSERT [dbo].[Events] OFF
+
+SET IDENTITY_INSERT [dbo].[Movies] ON
+INSERT INTO [dbo].[Movies] ([MovieId], [Name], [Year], [Genre], [Author], [Cast], [Description]) VALUES (2, N'Midnight in Paris', 2011, N'Drama', N'Woodie Allen', N'Owen Wilson, Rachel McAdams, Kathy Bates', N'While on a trip to Paris with his fiancee''s family, a nostalgic screenwriter finds himself mysteriously going back to the 1920s everyday at midnight.')
+INSERT INTO [dbo].[Movies] ([MovieId], [Name], [Year], [Genre], [Author], [Cast], [Description]) VALUES (4, N'Scent of a Woman', 1992, N'Drama', N'Martin Brest', N'Al Pacino, Chris O''Donnell, James Rebhorn', N'A prep school student needing money agrees to "babysit" a blind man, but the job is not at all what he anticipated.')
+INSERT INTO [dbo].[Movies] ([MovieId], [Name], [Year], [Genre], [Author], [Cast], [Description]) VALUES (5, N'A Beautiful Mind', 2001, N'Biography, Drama', N'Ron Howard', N' Russell Crowe, Ed Harris, Jennifer Connelly', N'After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish.')
+INSERT INTO [dbo].[Movies] ([MovieId], [Name], [Year], [Genre], [Author], [Cast], [Description]) VALUES (6, N'Assassin''s Creed', 2016, N'Action, Adventure, Drama', N'Justin Kurzel', N'Michael Fassbender, Marion Cotillard, Jeremy Irons', N'When Callum Lynch explores the memories of his ancestor Aguilar and gains the skills of a Master Assassin, he discovers he is a descendant of the secret Assassins society.')
+INSERT INTO [dbo].[Movies] ([MovieId], [Name], [Year], [Genre], [Author], [Cast], [Description]) VALUES (7, N'44dgbd', 0, N'sdgbsfg', N'dsfgdfg', N'dfsgdfgdg', N'dfgdsfgsdfg')
+INSERT INTO [dbo].[Movies] ([MovieId], [Name], [Year], [Genre], [Author], [Cast], [Description]) VALUES (8, N'345r', 45, N'435t', N'dgv', N'edrftvr', N'regt')
+INSERT INTO [dbo].[Movies] ([MovieId], [Name], [Year], [Genre], [Author], [Cast], [Description]) VALUES (9, N'345r', 45, N'435t', N'123', N'123', N'123')
+INSERT INTO [dbo].[Movies] ([MovieId], [Name], [Year], [Genre], [Author], [Cast], [Description]) VALUES (10, N'35', 345, N'rtgd', N'dfgdg', N'dsfgfdg', N'sdfgdf')
+SET IDENTITY_INSERT [dbo].[Movies] OFF
