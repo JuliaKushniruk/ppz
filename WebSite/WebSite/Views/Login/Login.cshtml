@@ -16,4 +16,8 @@
         @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
     </div>
     <button class="btn btn-primary" type="submit">Log In</button>
+
+    <p>Don't have account yet?</p>
+    @Html.ActionLink("Register", "Index", "RegisterUser", null, new { @class = "btn btn-default" })
+
 }
