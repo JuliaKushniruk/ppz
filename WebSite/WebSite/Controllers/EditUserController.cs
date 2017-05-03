@@ -11,7 +11,6 @@ namespace WebSite.Controllers
 {
     public class EditUserController : Controller
     {
-        // GET: Edit
         public async Task<ActionResult> Edit(string userId = "user_id")
         {
             AppUser user = await UserManager.FindByIdAsync(userId);
@@ -19,8 +18,7 @@ namespace WebSite.Controllers
             {
                 return View("Edit", user);
             }
-            else
-            {
+            else {
                 return RedirectToAction("Index");
             }
         }
@@ -58,7 +56,7 @@ namespace WebSite.Controllers
                     IdentityResult result = await UserManager.UpdateAsync(user);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index");
+                        return RedirectToAction("ViewUser", "UserPage", new { userId = user.Id });
                     }
                     else {
                         AddErrorsFromResult(result);

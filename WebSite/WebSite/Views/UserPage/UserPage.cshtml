@@ -13,7 +13,7 @@
         <p>Email: @Model.Email</p>
         <p>PasswordHash: @Model.PasswordHash</p>
 
-        @Html.ActionLink("Edit", "EditUser", new { userId = Model.Id }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Edit", "Edit", "EditUser", new { userId = Model.Id }, new { @class = "btn btn-default" })
     </div>
 </body>
 </html>
