@@ -30,7 +30,7 @@ namespace WebSite.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ViewUser", "UserPage", new { userId = user.Id }); 
                 }
                 else
                 {

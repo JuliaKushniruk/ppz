@@ -1,0 +1,19 @@
+﻿@model WebSite.Models.AppUser
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Page - @Model.UserName</title>
+</head>
+<body>
+    <div>
+        <p>Name: @Model.UserName</p>
+        <p>Email: @Model.Email</p>
+        <p>PasswordHash: @Model.PasswordHash</p>
+
+        @Html.ActionLink("Edit", "EditUser", new { userId = Model.Id }, new { @class = "btn btn-default" })
+    </div>
+</body>
+</html>

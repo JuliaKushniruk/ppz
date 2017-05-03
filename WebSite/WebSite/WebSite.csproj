@@ -193,6 +193,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Concrete\MainRepository.cs" />
     <Compile Include="Controllers\CinemaController.cs" />
+    <Compile Include="Controllers\EditUserController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Controllers\RegisterEventController.cs" />
     <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Controllers\SearchCinemaController.cs" />
+    <Compile Include="Controllers\UserPageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,6 +238,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\RegisterUser\Register.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\EditUser\Edit.cshtml" />
+    <Content Include="Views\UserPage\UserPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
