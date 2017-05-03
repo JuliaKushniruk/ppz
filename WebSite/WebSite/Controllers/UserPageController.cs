@@ -14,6 +14,7 @@ namespace WebSite.Controllers
 {
     public class UserPageController : Controller
     {
+        [Authorize]
         public string Index()
         {
             return "index page";

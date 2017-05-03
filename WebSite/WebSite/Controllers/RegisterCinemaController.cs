@@ -12,12 +12,14 @@ namespace WebSite.Controllers
     {
         MainRepository repository = new MainRepository();
 
+        [Authorize]
         [HttpGet]
         public ViewResult Register()
         {
             return View("RegisterCinema");
         }
 
+        [Authorize]
         [HttpPost]
         public string Register(Cinema model)
         {
