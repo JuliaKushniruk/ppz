@@ -56,7 +56,7 @@ namespace WebSite.Controllers
                     {
                         IsPersistent = false
                     }, ident);
-                    return Redirect(returnUrl);
+                    return RedirectToAction("ViewUser", "UserPage", new { userId = user.Id });
                 }
             }
             ViewBag.returnUrl = returnUrl;
