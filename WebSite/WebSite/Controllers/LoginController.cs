@@ -19,6 +19,33 @@ namespace WebSite.Controllers
             ViewBag.returnUrl = returnUrl;
             return View();
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginModel details, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                AppUser user = await UserManager.FindAsync(details.Name, details.Password);
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "Invalid name or password.");
+                }
+                else
+                {
+                    ClaimsIdentity ident = await UserManager.CreateIdentityAsync(user,
+                    DefaultAuthenticationTypes.ApplicationCookie);
+                    AuthManager.SignOut();
+                    AuthManager.SignIn(new AuthenticationProperties {
+                        IsPersistent = false }, ident)
+                    return Redirect(returnUrl);
+                }
+            }
+            ViewBag.returnUrl = returnUrl;
+            return View(details);
+        }
+
         private IAuthenticationManager AuthManager
         {
             get
@@ -32,35 +59,6 @@ namespace WebSite.Controllers
             {
                 return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
             }
-        }
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginModel details, string returnUrl)
-        {
-            if (ModelState.IsValid)
-            {
-                AppUser user = await UserManager.FindAsync(details.Name,
-                details.Password);
-                if (user == null)
-                {
-                    ModelState.AddModelError("", "Invalid name or password.");
-                }
-                else
-                {
-                    ClaimsIdentity ident = await UserManager.CreateIdentityAsync(user,
-                    DefaultAuthenticationTypes.ApplicationCookie);
-                    AuthManager.SignOut();
-                    AuthManager.SignIn(new AuthenticationProperties
-                    {
-                        IsPersistent = false
-                    }, ident);
-                    return RedirectToAction("ViewUser", "UserPage", new { userId = user.Id });
-                }
-            }
-            ViewBag.returnUrl = returnUrl;
-            return View(details);
         }
     }
 }
