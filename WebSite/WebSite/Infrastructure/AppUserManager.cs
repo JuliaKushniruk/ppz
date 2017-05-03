@@ -24,6 +24,11 @@ namespace WebSite.Infrastructure
                 RequireUppercase = true
             };
 
+            manager.UserValidator = new UserValidator<AppUser>(manager) {
+                AllowOnlyAlphanumericUserNames = true,
+                RequireUniqueEmail = true
+            };
+
             return manager;
         }
     }
