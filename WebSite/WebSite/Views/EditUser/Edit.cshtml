@@ -23,7 +23,7 @@
         <input name="password" type="password" class="form-control" />
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
-    @Html.ActionLink("ViewUser", "UserPage", new { userId = Model.Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Cancel", "ViewUser", "UserPage", new { userId = Model.Id }, new { @class = "btn btn-default" })
 }
 
 
