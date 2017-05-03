@@ -198,7 +198,7 @@
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\RegisterCinemaController.cs" />
     <Compile Include="Controllers\RegisterEventController.cs" />
-    <Compile Include="Controllers\RegisterPageController.cs" />
+    <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Controllers\SearchCinemaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,7 +214,7 @@
     <Compile Include="Models\Cinema.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\RegisterEventModel.cs" />
-    <Compile Include="Models\RegisterPageModel.cs" />
+    <Compile Include="Models\RegisterUserModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -234,7 +234,7 @@
     <Content Include="scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\_BasicLayout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\RegisterPage\Register.cshtml" />
+    <Content Include="Views\RegisterUser\Register.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

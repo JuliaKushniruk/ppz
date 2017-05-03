@@ -1,4 +1,4 @@
-﻿@model WebSite.Models.RegisterPageModel 
+﻿@model WebSite.Models.RegisterUserModel 
     @{ 
         ViewBag.Title = "Register";
     } 
@@ -22,6 +22,6 @@
     @Html.PasswordFor(x => x.Password, new { @class = "form-control" })    
 </div>
 
-<button type="submit" class="btn btn-primary">Create</button>    
+<button type="submit" class="btn btn-primary">Register</button>    
 @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
 }

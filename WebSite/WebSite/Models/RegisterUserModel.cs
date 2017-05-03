@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebSite.Models
 {
-    public class RegisterPageModel
+    public class RegisterUserModel
     {
         [Required]
         public String Name { get; set; }

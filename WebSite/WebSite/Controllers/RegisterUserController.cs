@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebSite.Controllers
 {
-    public class RegisterPageController : Controller
+    public class RegisterUserController : Controller
     {
         // GET: RegisterPage
         public ActionResult Index()
@@ -17,7 +17,7 @@ namespace WebSite.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Index(RegisterPageModel model)
+        public async Task<ActionResult> Index(RegisterUserModel model)
         {
             if (ModelState.IsValid)
             {

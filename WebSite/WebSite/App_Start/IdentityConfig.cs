@@ -17,7 +17,7 @@ namespace WebSite.App_Start
                 new CookieAuthenticationOptions
                 {
                     AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                    LoginPath = new PathString("/Login/Index"),
+                    LoginPath = new PathString("/Login/Login"),
                 });
         }
     }
