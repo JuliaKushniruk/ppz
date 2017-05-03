@@ -204,9 +204,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
+    <Compile Include="Infrastructure\AppRole.cs" />
+    <Compile Include="Infrastructure\AppRoleManager.cs" />
     <Compile Include="Infrastructure\CinemasSiteContext.cs" />
     <Compile Include="Infrastructure\AppUserManager.cs" />
     <Compile Include="Models\AppUser.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Cinema.cs" />
     <Compile Include="Models\Event.cs" />
@@ -232,6 +235,7 @@
     <Content Include="Views\_BasicLayout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\RegisterPage\Register.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -257,7 +261,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51712</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51712/</IISUrl>
+          <IISUrl>http://localhost:50712/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -12,6 +12,7 @@ namespace WebSite.App_Start
         {
             app.CreatePerOwinContext<CinemasSiteContext>(CinemasSiteContext.Create);
             app.CreatePerOwinContext<AppUserManager>(AppUserManager.Create);
+            app.CreatePerOwinContext<AppRoleManager>(AppRoleManager.Create);
             app.UseCookieAuthentication( 
                 new CookieAuthenticationOptions
                 {

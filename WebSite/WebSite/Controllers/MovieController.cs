@@ -13,9 +13,11 @@ namespace WebSite.Controllers
     {
         MainRepository repository = new MainRepository();
         // GET: Movie
-        public ActionResult ViewMovie()
+        public ActionResult ViewMovie(int movieId = 1)
         {
-            Movie newMovie = repository.Movies.First<Movie>();
+            Movie newMovie = (from movie in repository.Movies
+                              where movie.MovieId == movieId
+                              select movie).FirstOrDefault<Movie>();
 
             return View("Movie", newMovie);
         }
