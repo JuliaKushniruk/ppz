@@ -1,0 +1,24 @@
+﻿@model WebSite.Models.AppUser
+@{
+    ViewBag.Title = "Home";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <div> 
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>  @Html.ActionLink("Log in", "Login", "Login", null, new { @class = "btn btn-default" }) </p>
+        <p>  @Html.ActionLink("Register", "Index", "RegisterUser", null, new { @class = "btn btn-default" }) </p>
+        <p>  @Html.ActionLink("Search cinemas", "Index", "SearchCinema", null, new { @class = "btn btn-default" }) </p>
+</div>
+</body>
+</html>
