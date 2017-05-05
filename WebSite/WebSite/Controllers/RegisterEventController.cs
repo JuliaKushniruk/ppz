@@ -28,8 +28,8 @@ namespace WebSite.Controllers
             repository.AddMovie(model.Movie);
             Event cinemaEvent = new Event();
             cinemaEvent.Author = "Yarko";
-            cinemaEvent.CinemaId = model.CinemaId;
-            cinemaEvent.MovieId = model.Movie.MovieId;
+            cinemaEvent.Cinema = repository.GetCinemaById(model.CinemaId);
+            cinemaEvent.Movie = model.Movie;
             repository.AddEvent(cinemaEvent);
             return "Event added";
         }

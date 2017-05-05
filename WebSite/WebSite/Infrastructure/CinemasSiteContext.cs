@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using WebSite.Models;
+using Microsoft.AspNet.Identity;
 
 namespace WebSite.Infrastructure
 {
@@ -32,6 +33,18 @@ namespace WebSite.Infrastructure
     {
         protected override void Seed(CinemasSiteContext context)
         {
+            AppUserManager userManager = new AppUserManager(new UserStore<AppUser>(context));
+
+            string userName = "username";
+            string email = "email@qqq";
+            string pass = "123Qqq";
+            var user = userManager.FindByName(userName);
+            if (user == null)
+            {
+                userManager.Create(new AppUser { UserName = userName, Email = email }, pass);
+                user = userManager.FindByName(userName);
+            }
+
             Movie movie = new Movie()
             {
                 Name = "Midnight in Paris",
@@ -75,37 +88,7 @@ namespace WebSite.Infrastructure
                 Cast = " Michael Fassbender, Marion Cotillard, Jeremy Irons"
             };
             context.Movies.Add(movie4);
-            base.Seed(context);
-            Event eventt = new Event()
-            {
-                CinemaId = 1,
-                MovieId = 2,
-                Author = "Yura",
-                IsApproved = false,
-                Price = 50
 
-            };
-            context.Events.Add(eventt);
-            Event event2 = new Event()
-            {
-                CinemaId = 2,
-                MovieId = 5,
-                Author = "Yarko",
-                IsApproved = true,
-                Price = 100
-
-            };
-            context.Events.Add(event2);
-            Event event3 = new Event()
-            {
-                CinemaId = 3,
-                MovieId = 4,
-                Author = "Yuliya",
-                IsApproved = true,
-                Price = 75
-
-            };
-            context.Events.Add(event3);
 
             Cinema cinema = new Cinema()
             {
@@ -133,10 +116,42 @@ namespace WebSite.Infrastructure
                 Rows = 50,
                 Seats = 30
             };
+
             context.Cinemas.Add(cinema3);
+
+            Event eventt = new Event()
+            {
+                Cinema = cinema,
+                Movie = movie,
+                IsApproved = false,
+                Price = 50,
+                Author = user.UserName
+
+            };
+            context.Events.Add(eventt);
+            Event event2 = new Event()
+            {
+                Movie = movie3,
+                Cinema = cinema2,
+                IsApproved = true,
+                Price = 100,
+                Author = user.UserName
+
+            };
+            context.Events.Add(event2);
+            Event event3 = new Event()
+            {
+                Movie = movie2,
+                Cinema = cinema3,
+                IsApproved = true,
+                Price = 75,
+                Author = user.UserName
+
+            };
+            context.Events.Add(event3);
             base.Seed(context);
         }
-        
+
         public void PerformInitialSetup(CinemasSiteContext context)
         {
             // initial configuration will go here    

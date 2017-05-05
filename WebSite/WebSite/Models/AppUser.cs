@@ -9,5 +9,6 @@ namespace WebSite.Models
     public class AppUser : IdentityUser
     {
         // additional properties will go here   
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

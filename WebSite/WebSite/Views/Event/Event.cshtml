@@ -1,5 +1,5 @@
-﻿@model WebSite.Models.Event
-@{
+﻿@model IEnumerable<WebSite.Models.EventLikedModel>
+{
 
 }
 
@@ -8,18 +8,32 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+   
     <title>Index</title>
 </head>
 <body>
-    <div> 
-        <p> <b>Кінотеатр:</b>  </p>
-        <p> <b>Фільм:</b> </p>
-        @if (@Model.IsApproved)
-        { <p> <b>Статус:</b> Затверджено </p>}
-        else
-        { <p> <b>Статус:</b> Розглядається </p>}
-        <p> <b>Користувач, що запропонував:</b> @Model.Author</p>
-        <p> <b>Ціна:</b> @Model.Price грн</p>
+    <div>
+        @foreach (var eventModel in Model)
+        {
+            <p> <b>Кінотеатр:</b>  @eventModel.Cinema </p>
+            <p> <b>Фільм:</b>@eventModel.Film </p>
+            if (eventModel.IsApproved)
+            { <p> <b>Статус:</b> Затверджено </p>}
+            else
+            { <p> <b>Статус:</b> Розглядається </p>}
+            <p> <b>Користувач, що запропонував:</b> @eventModel.Author</p>
+            <p> <b>Ціна:</b> @eventModel.Price грн</p>
+
+            if (!eventModel.IsLiked)
+            {
+                @Html.ActionLink("LIKE", "LikeEvent", "Event", eventModel, new { @class = "btn btn-danger" })
+            }
+            else
+            {
+                @Html.ActionLink("DISLIKE", "DislikeEvent", "Event", eventModel, new { @class = "btn btn-success" })
+            }
+
+        }
     </div>
 </body>
 </html>

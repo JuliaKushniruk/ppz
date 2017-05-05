@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,23 +14,48 @@ namespace WebSite.Controllers
         MainRepository repository = new MainRepository();
         // GET: Event
 
+        [HttpGet]
         public ActionResult ViewEvent()
         {
-            Event newEvent = repository.Events.First<Event>();
-            return View("Event", newEvent);
+            var events = repository.Events;
+            List<EventLikedModel> eventsToDisplay = new List<EventLikedModel>();
+
+            foreach (var e in events)
+            {
+                eventsToDisplay.Add(
+                    new EventLikedModel
+                    {
+                        EventId = e.EventId,
+                        Cinema = e.Cinema.Name,
+                        Film = e.Movie.Name,
+                        IsApproved = e.IsApproved,
+                        Price = e.Price,
+                        Author = e.Author,
+                        IsLiked = e.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId()) != null
+                    });
+            }
+            return View("Event", eventsToDisplay);
+
         }
 
-        /*[HttpGet]
-        public ViewResult Event()
+        public ActionResult LikeEvent(EventLikedModel eventModel)
         {
-            return View();
-        }*/
-        /*[HttpPost]
-        public ViewResult f(Models.Event guestResponse)
-        {
-            //TODO: add model validation (e.g. model.IsValid)
+            var result = repository.GetEventById(eventModel.EventId);
+            var user = repository.GetUserById(User.Identity.GetUserId());
+            result.Users.Add(user);
+            user.Events.Add(result);
+            repository.Save();
+            return RedirectToAction("ViewEvent");
+        }
 
-            return View("Event", guestResponse);
-        }*/
+        public ActionResult DislikeEvent(EventLikedModel eventModel)
+        {
+            var result = repository.GetEventById(eventModel.EventId);
+            var user = repository.GetUserById(User.Identity.GetUserId());
+            result.Users.Remove(user);
+            repository.UpdateEvent(result);
+            repository.Save();
+            return RedirectToAction("ViewEvent");
+        }
     }
 }
