@@ -32,6 +32,7 @@
             {
                 @Html.ActionLink("DISLIKE", "DislikeEvent", "Event", eventModel, new { @class = "btn btn-success" })
             }
+            <p> Кількість лайків: @eventModel.LikesAmount</p>
 
         }
     </div>

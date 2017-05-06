@@ -14,5 +14,6 @@ namespace WebSite.Models
         public double Price { get; set; }
         public string Author { get; set; }
         public bool IsLiked { get; set; }
+        public int LikesAmount { get; set; }
     }
 }

@@ -135,7 +135,7 @@ namespace WebSite.Infrastructure
                 Cinema = cinema2,
                 IsApproved = true,
                 Price = 100,
-                Author = user.UserName
+                Author = user.UserName.ToString()
 
             };
             context.Events.Add(event2);

@@ -31,7 +31,8 @@ namespace WebSite.Controllers
                         IsApproved = e.IsApproved,
                         Price = e.Price,
                         Author = e.Author,
-                        IsLiked = e.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId()) != null
+                        IsLiked = e.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId()) != null,
+                        LikesAmount =e.Users.Count
                     });
             }
             return View("Event", eventsToDisplay);
@@ -45,6 +46,7 @@ namespace WebSite.Controllers
             result.Users.Add(user);
             user.Events.Add(result);
             repository.Save();
+            eventModel.LikesAmount++;
             return RedirectToAction("ViewEvent");
         }
 
@@ -55,6 +57,7 @@ namespace WebSite.Controllers
             result.Users.Remove(user);
             repository.UpdateEvent(result);
             repository.Save();
+            eventModel.LikesAmount--;
             return RedirectToAction("ViewEvent");
         }
     }
