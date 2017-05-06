@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,15 +24,17 @@ namespace WebSite.Controllers
 
         [Authorize]
         [HttpPost]
-        public string Register(RegisterEventModel model)
+        public ActionResult Register(RegisterEventModel model)
         {
             repository.AddMovie(model.Movie);
             Event cinemaEvent = new Event();
-            cinemaEvent.Author = "Yarko";
+            cinemaEvent.Author = repository.GetUserById(User.Identity.GetUserId()).UserName;
             cinemaEvent.Cinema = repository.GetCinemaById(model.CinemaId);
             cinemaEvent.Movie = model.Movie;
+            cinemaEvent.Price = model.Price;
             repository.AddEvent(cinemaEvent);
-            return "Event added";
+            repository.Save();
+            return RedirectToAction("ViewEvent", "Event",new { cinemaEvent.Cinema.CinemaId });
         }
     }
 }

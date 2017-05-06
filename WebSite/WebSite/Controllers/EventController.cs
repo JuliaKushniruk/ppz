@@ -12,14 +12,19 @@ namespace WebSite.Controllers
     public class EventController : Controller
     {
         MainRepository repository = new MainRepository();
-        // GET: Event
-
-        [HttpGet]
-        public ActionResult ViewEvent()
+        [AllowAnonymous]
+        public ViewResult ViewEvent(int? CinemaId )
         {
-            var events = repository.Events;
+            IEnumerable<Event> events;
+            if (CinemaId == null)
+            {
+                events = from eventss in repository.Events select eventss;
+            }
+            else
+            {
+                events = from eventss in repository.Events where eventss.Cinema.CinemaId == CinemaId select eventss;
+            }
             List<EventLikedModel> eventsToDisplay = new List<EventLikedModel>();
-
             foreach (var e in events)
             {
                 eventsToDisplay.Add(
@@ -32,11 +37,10 @@ namespace WebSite.Controllers
                         Price = e.Price,
                         Author = e.Author,
                         IsLiked = e.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId()) != null,
-                        LikesAmount =e.Users.Count
+                        LikesAmount = e.Users.Count
                     });
             }
             return View("Event", eventsToDisplay);
-
         }
 
         public ActionResult LikeEvent(EventLikedModel eventModel)
@@ -47,7 +51,7 @@ namespace WebSite.Controllers
             user.Events.Add(result);
             repository.Save();
             eventModel.LikesAmount++;
-            return RedirectToAction("ViewEvent");
+            return RedirectToAction("ViewEvent", new { result.Cinema.CinemaId });
         }
 
         public ActionResult DislikeEvent(EventLikedModel eventModel)
@@ -58,7 +62,7 @@ namespace WebSite.Controllers
             repository.UpdateEvent(result);
             repository.Save();
             eventModel.LikesAmount--;
-            return RedirectToAction("ViewEvent");
+            return RedirectToAction("ViewEvent", new { result.Cinema.CinemaId });
         }
     }
 }

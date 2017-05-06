@@ -40,17 +40,14 @@ namespace WebSite.Concrete
         public void AddEvent(Event cinemaEvent)
         {
             context.Events.Add(cinemaEvent);
-            context.SaveChanges();
         }
         public void AddMovie(Movie movie)
         {
             context.Movies.Add(movie);
-            context.SaveChanges();
         }        
         public void AddCinema(Cinema cinema)
         {
             context.Cinemas.Add(cinema);
-            context.SaveChanges();
         }
         public void Save()
         {

@@ -135,14 +135,14 @@ namespace WebSite.Infrastructure
                 Cinema = cinema2,
                 IsApproved = true,
                 Price = 100,
-                Author = user.UserName.ToString()
+                Author = user.UserName
 
             };
             context.Events.Add(event2);
             Event event3 = new Event()
             {
                 Movie = movie2,
-                Cinema = cinema3,
+                Cinema = cinema,
                 IsApproved = true,
                 Price = 75,
                 Author = user.UserName
