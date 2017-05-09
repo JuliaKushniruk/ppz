@@ -15,7 +15,7 @@ namespace WebSite.Controllers
             return View();
         }
 
-        [Authorize(Roles ="RegisteredUser")]
+        [Authorize]
         public ActionResult Logout() {
             AuthManager.SignOut();
             return RedirectToAction("Login", "Login");

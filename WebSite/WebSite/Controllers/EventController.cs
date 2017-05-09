@@ -43,6 +43,7 @@ namespace WebSite.Controllers
             return View("Event", eventsToDisplay);
         }
 
+        [Authorize]
         public ActionResult LikeEvent(EventLikedModel eventModel)
         {
             var result = repository.GetEventById(eventModel.EventId);
@@ -54,6 +55,7 @@ namespace WebSite.Controllers
             return RedirectToAction("ViewEvent", new { result.Cinema.CinemaId });
         }
 
+        [Authorize]
         public ActionResult DislikeEvent(EventLikedModel eventModel)
         {
             var result = repository.GetEventById(eventModel.EventId);

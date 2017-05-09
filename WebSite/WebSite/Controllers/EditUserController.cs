@@ -9,9 +9,9 @@ using System.Web;
 
 namespace WebSite.Controllers
 {
+    [Authorize]
     public class EditUserController : Controller
     {
-        [Authorize]
         public async Task<ActionResult> Edit(string userId = "user_id")
         {
             AppUser user = await UserManager.FindByIdAsync(userId);
@@ -24,7 +24,6 @@ namespace WebSite.Controllers
             }
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<ActionResult> Edit(string id, string email, string password)
         {

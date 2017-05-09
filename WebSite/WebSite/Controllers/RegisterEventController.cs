@@ -9,11 +9,11 @@ using WebSite.Models;
 
 namespace WebSite.Controllers
 {
+    [Authorize]
     public class RegisterEventController : Controller
     {
         MainRepository repository = new MainRepository();
 
-        [Authorize]
         [HttpGet]
         public ViewResult Register(int cinemaId = 0)
         {
@@ -22,7 +22,6 @@ namespace WebSite.Controllers
             return View("RegisterEvent", model);
         }
 
-        [Authorize]
         [HttpPost]
         public ActionResult Register(RegisterEventModel model)
         {

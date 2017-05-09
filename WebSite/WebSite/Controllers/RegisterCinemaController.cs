@@ -10,18 +10,17 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace WebSite.Controllers
 {
+    [Authorize]
     public class RegisterCinemaController : Controller
     {
         MainRepository repository = new MainRepository();
 
-        [Authorize]
         [HttpGet]
         public ViewResult Register()
         {
             return View("RegisterCinema");
         }
 
-        [Authorize]
         [HttpPost]
         public string Register(Cinema model)
         {
