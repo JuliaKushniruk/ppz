@@ -15,10 +15,10 @@ namespace WebSite.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles ="RegisteredUser")]
         public ActionResult Logout() {
             AuthManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Login");
         }
 
         private IAuthenticationManager AuthManager {

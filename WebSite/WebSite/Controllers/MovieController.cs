@@ -15,11 +15,9 @@ namespace WebSite.Controllers
         // GET: Movie
         public ActionResult ViewMovie(int movieId = 1)
         {
-            Movie newMovie = (from movie in repository.Movies
-                              where movie.MovieId == movieId
-                              select movie).FirstOrDefault<Movie>();
+            var movies = repository.Movies;
 
-            return View("Movie", newMovie);
+            return View("Movie", movies);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model WebSite.Models.Movie
+﻿@model IEnumerable<WebSite.Models.Movie>
 @{
 
 }
@@ -10,22 +10,26 @@
     <title>Movie</title>
 </head>
 <body>
+@foreach (var movieModel in Model)
+{
     <div>
-        <p>Назва фільму: @Model.Name</p>
-        <p>Рік показу: @Model.Year</p>
+        <p>Назва фільму: @movieModel.Name</p>
+        <p>Рік показу: @movieModel.Year</p>
         <p>
-            Жанр: @Model.Genre
+            Жанр: @movieModel.Genre
         </p>
         <p>
-            Режисер: @Model.Author
+            Режисер: @movieModel.Author
         </p>
         <p>
             Актори:
            
-            <p>@Model.Cast</p> 
+            <p>@movieModel.Cast</p> 
             
         </p>
-        <p>Опис фільму: @Model.Description</p>
+        <p>Опис фільму: @movieModel.Description</p>
+        <p></p>
     </div>
+}
 </body>
 </html>

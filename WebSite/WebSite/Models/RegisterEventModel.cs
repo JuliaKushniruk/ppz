@@ -9,5 +9,6 @@ namespace WebSite.Models
     {
         public Movie Movie { get; set; }
         public int CinemaId { get; set; }
+        public double Price { get; set; }
     }
 }
