@@ -15,7 +15,8 @@ namespace WebSite.Infrastructure
         : base(store)
         {
         }
-        public static AppRoleManager Create(IdentityFactoryOptions<AppRoleManager> options,IOwinContext context)
+
+        public static AppRoleManager Create(IdentityFactoryOptions<AppRoleManager> options, IOwinContext context)
         {
             return new AppRoleManager(new
             RoleStore<AppRole>(context.Get<CinemasSiteContext>()));

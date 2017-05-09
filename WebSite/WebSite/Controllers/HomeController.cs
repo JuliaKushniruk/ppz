@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Owin.Security;
 
 namespace WebSite.Controllers
 {
@@ -12,6 +13,18 @@ namespace WebSite.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [Authorize]
+        public ActionResult Logout() {
+            AuthManager.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+        private IAuthenticationManager AuthManager {
+            get {
+                return HttpContext.GetOwinContext().Authentication;
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ namespace WebSite.Controllers
     public class LoginController : Controller
     {
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login(string returnUrl = "/Home/Index")
         {
             ViewBag.returnUrl = returnUrl;
             return View();
@@ -38,7 +38,7 @@ namespace WebSite.Controllers
                     DefaultAuthenticationTypes.ApplicationCookie);
                     AuthManager.SignOut();
                     AuthManager.SignIn(new AuthenticationProperties {
-                        IsPersistent = false }, ident)
+                        IsPersistent = false }, ident);
                     return Redirect(returnUrl);
                 }
             }
@@ -46,17 +46,15 @@ namespace WebSite.Controllers
             return View(details);
         }
 
-        private IAuthenticationManager AuthManager
-        {
-            get
-            {
+        private IAuthenticationManager AuthManager{
+            get{
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
-        private AppUserManager UserManager
-        {
+
+        private AppUserManager UserManager{
             get
-            {
+{
                 return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using WebSite.Models;
+using Microsoft.AspNet.Identity;
 
 namespace WebSite.Infrastructure
 {
@@ -21,6 +22,7 @@ namespace WebSite.Infrastructure
         {
             return new CinemasSiteContext();
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -134,6 +136,26 @@ namespace WebSite.Infrastructure
                 Seats = 30
             };
             context.Cinemas.Add(cinema3);
+
+            string registeredUser = "RegisteredUser";
+            string cinemaModerator = "CinemaModerator";
+            string administrator = "Administrator";
+
+            AppRoleManager roleManager = new AppRoleManager(new RoleStore<AppRole>(context));
+
+            if (!roleManager.RoleExists(registeredUser))
+            {
+                roleManager.Create(new AppRole(registeredUser));
+            }
+            if (!roleManager.RoleExists(cinemaModerator))
+            {
+                roleManager.Create(new AppRole(cinemaModerator));
+            }
+            if (!roleManager.RoleExists(administrator))
+            {
+                roleManager.Create(new AppRole(administrator));
+            }
+
             base.Seed(context);
         }
         
@@ -141,5 +163,6 @@ namespace WebSite.Infrastructure
         {
             // initial configuration will go here    
         }
+
     }
 }
