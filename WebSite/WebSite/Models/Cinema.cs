@@ -19,5 +19,7 @@ namespace WebSite.Models
         public int Seats { get; set; }
 
         public ICollection<Event> Events { get; set; }
+
+        public virtual AppUser Moderator { get; set; }
     }
 }

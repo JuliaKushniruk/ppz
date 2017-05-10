@@ -26,7 +26,7 @@ namespace WebSite.Infrastructure
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<AppUser>().ToTable("Users");
+            modelBuilder.Entity<AppUser>().ToTable("Users");           
         }
     }
 
@@ -39,10 +39,11 @@ namespace WebSite.Infrastructure
             string userName = "username";
             string email = "email@qqq";
             string pass = "123Qqq";
+            bool isbanned = false;
             var user = userManager.FindByName(userName);
             if (user == null)
             {
-                userManager.Create(new AppUser { UserName = userName, Email = email }, pass);
+                userManager.Create(new AppUser { UserName = userName, Email = email,IsBanned = isbanned }, pass);
                 user = userManager.FindByName(userName);
             }
 
