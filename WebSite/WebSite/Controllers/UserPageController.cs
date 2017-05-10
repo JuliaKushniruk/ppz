@@ -49,7 +49,7 @@ namespace WebSite.Controllers
             Cinema cinemaToDelete = repository.GetCinemaById(cinemaId);
             if (cinemaToDelete != null)
             {
-                //repository.Cinemas.Remove(cinemaToDelete);
+                repository.DeleteCinema(cinemaToDelete);
                 return RedirectToAction("ViewUser", "UserPage", new { userId = User.Identity.GetUserId() });
             }
             else

@@ -17,6 +17,10 @@
     
     <p>@Model.Address</p>
 
+    @if (true)
+    {
+        @Html.ActionLink("Delete cinema", "DeleteCinema", "UserPage", new { cinemaId = Model.CinemaId }, new { @class = "btn btn-default" })
+    }
 
     <p>@Html.ActionLink("Register Event", "Register", "RegisterEvent", new { cinemaId = Model.CinemaId }, null) </p>
 
