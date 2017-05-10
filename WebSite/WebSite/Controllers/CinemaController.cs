@@ -12,7 +12,7 @@ namespace WebSite.Controllers
     public class CinemaController : Controller
     {
         MainRepository repository = new MainRepository();
-        // GET: Cinema
+
         public ActionResult ViewCinema(int cinemaId = 0)
         {
             CinemaPageModel model = new CinemaPageModel();
