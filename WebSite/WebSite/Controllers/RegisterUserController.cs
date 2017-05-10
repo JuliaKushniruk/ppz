@@ -5,6 +5,8 @@ using System.Web;
 using WebSite.Models;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
+using Microsoft.Owin.Security;
+using System.Security.Claims;
 
 namespace WebSite.Controllers
 {
@@ -27,10 +29,17 @@ namespace WebSite.Controllers
                     Email = model.Email
                 };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
+                AppUser registeredUser = await UserManager.FindAsync(user.UserName, model.Password);
+                ClaimsIdentity ident = await UserManager.CreateIdentityAsync(user,
+                    DefaultAuthenticationTypes.ApplicationCookie);
+                AuthManager.SignOut();
+                AuthManager.SignIn(new AuthenticationProperties
+                {
+                    IsPersistent = false
+                }, ident);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("ViewUser", "UserPage", new { userId = user.Id }); 
+                    return RedirectToAction("Index", "Home"); 
                 }
                 else
                 {
@@ -53,6 +62,14 @@ namespace WebSite.Controllers
             get
             {
                 return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+            }
+        }
+
+        private IAuthenticationManager AuthManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
             }
         }
     }
