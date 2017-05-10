@@ -16,10 +16,17 @@
         <br />
         <br />
         <br />
-        <p>  @Html.ActionLink("Log in", "Login", "Login", null, new { @class = "btn btn-default" }) </p>
-        <p>  @Html.ActionLink("Register", "Index", "RegisterUser", null, new { @class = "btn btn-default" }) </p>
         <p>  @Html.ActionLink("Search cinemas", "Index", "SearchCinema", null, new { @class = "btn btn-default" }) </p>
-        <p>  @Html.ActionLink("Log out", "Logout", "Home" , null, new { @class = "btn btn-default" }) </p>
+        @if (Model == null)
+        {
+            <p>  @Html.ActionLink("Log in", "Login", "Login", null, new { @class = "btn btn-default" }) </p>
+            <p>  @Html.ActionLink("Register", "Index", "RegisterUser", null, new { @class = "btn btn-default" }) </p>
+        }
+        else
+        {
+            <p>  @Html.ActionLink("My account", "ViewUser", "UserPage", new { userId = Model.Id }, new { @class = "btn btn-default" }) </p>
+            <p>  @Html.ActionLink("Log out", "Logout", "Home", null, new { @class = "btn btn-default" }) </p>
+        }
 </div>
 </body>
 </html>

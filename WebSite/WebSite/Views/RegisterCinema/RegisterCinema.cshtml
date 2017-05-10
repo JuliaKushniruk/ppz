@@ -1,4 +1,4 @@
-﻿@model WebSite.Models.Cinema
+﻿@model WebSite.Models.RegisterCinemaModel
 @{
 }
 
@@ -13,13 +13,15 @@
     <div>
         @using (Html.BeginForm())
         {
-            <p>Cinema name: @Html.TextBoxFor(x => x.Name) </p>
-            <p>Description : @Html.TextBoxFor(x => x.Description) </p>
-            <p>Address : @Html.TextBoxFor(x => x.Address)</p>
-            <p>Rows : @Html.TextBoxFor(x => x.Rows)</p>
-            <p>Seats : @Html.TextBoxFor(x => x.Seats) </p>
+            <p>Cinema name: @Html.TextBoxFor(x => x.Cinema.Name) </p>
+            <p>Description : @Html.TextBoxFor(x => x.Cinema.Description) </p>
+            <p>Address : @Html.TextBoxFor(x => x.Cinema.Address)</p>
+            <p>Rows : @Html.TextBoxFor(x => x.Cinema.Rows)</p>
+            <p>Seats : @Html.TextBoxFor(x => x.Cinema.Seats) </p>
             <input type="submit" value="Confirm" />
         }
+        <p>  @Html.ActionLink("Cancel", "ViewUser", "UserPage", new { userId = Model.CurrentUserId }, new { @class = "btn btn-default" }) </p>
+
     </div>
 </body>
 </html>

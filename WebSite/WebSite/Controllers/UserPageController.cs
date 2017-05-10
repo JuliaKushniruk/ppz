@@ -14,6 +14,8 @@ namespace WebSite.Controllers
 {
     public class UserPageController : Controller
     {
+        MainRepository repository = new MainRepository();
+
         [Authorize]
         public string Index()
         {
@@ -25,7 +27,14 @@ namespace WebSite.Controllers
             AppUser user = await UserManager.FindByIdAsync(userId);
             if (user != null)
             {
-                return View("UserPage", user);
+                UserPageModel model = new UserPageModel();
+                model.User = user;
+                //model.ModeratedCinemas = from cinema in repository.Cinemas
+                //                         where (cinema.ModeratorId == user.Id)
+                //                         select cinema;
+                model.ModeratedCinemas = from cinema in repository.Cinemas
+                                         select cinema;
+                return View("UserPage", model);
             }
             else
             {

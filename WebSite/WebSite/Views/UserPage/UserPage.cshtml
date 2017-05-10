@@ -1,19 +1,41 @@
-﻿@model WebSite.Models.AppUser
+﻿@model WebSite.Models.UserPageModel
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Page - @Model.UserName</title>
+    <title>Page - @Model.User.UserName</title>
 </head>
 <body>
     <div>
-        <p>Name: @Model.UserName</p>
-        <p>Email: @Model.Email</p>
-        <p>PasswordHash: @Model.PasswordHash</p>
-
-        @Html.ActionLink("Edit", "Edit", "EditUser", new { userId = Model.Id }, new { @class = "btn btn-default" })
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>Name: @Model.User.UserName</p>
+        <p>Email: @Model.User.Email</p>
+        <p>PasswordHash: @Model.User.PasswordHash</p>
+        @Html.ActionLink("Edit", "Edit", "EditUser", new { userId = Model.User.Id }, new { @class = "btn btn-default" })
+        
+        <p>Moderated cinemas:</p>
+            @if (@Model.ModeratedCinemas != null)
+            {
+                <ul>
+                    @foreach (var cinema in @Model.ModeratedCinemas)
+                    {
+                        <li>@Html.ActionLink(cinema.Name, "ViewCinema", "Cinema", new { cinemaId = cinema.CinemaId }, null) </li>
+                    }
+                </ul>
+            }
+            else
+            {
+        <p> No moderated cinemas yet. </p>
+        }
+        
+        @Html.ActionLink("Add cinema", "Register", "RegisterCinema", null, new { @class = "btn btn-default" })
+       
     </div>
 </body>
 </html>

@@ -217,9 +217,11 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Cinema.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\RegisterCinemaModel.cs" />
     <Compile Include="Models\RegisterEventModel.cs" />
     <Compile Include="Models\RegisterUserModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
+    <Compile Include="Models\UserPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

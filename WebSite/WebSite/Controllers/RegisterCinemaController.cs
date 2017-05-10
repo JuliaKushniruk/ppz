@@ -7,6 +7,7 @@ using WebSite.Concrete;
 using WebSite.Models;
 using WebSite.Infrastructure;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
 
 namespace WebSite.Controllers
 {
@@ -18,16 +19,18 @@ namespace WebSite.Controllers
         [HttpGet]
         public ViewResult Register()
         {
-            return View("RegisterCinema");
+            RegisterCinemaModel model = new RegisterCinemaModel();
+            model.Cinema = new Cinema();
+            model.CurrentUserId = User.Identity.GetUserId();
+            return View("RegisterCinema", model);
         }
 
         [HttpPost]
-        public string Register(Cinema model)
+        public ActionResult Register(RegisterCinemaModel model)
         {
-            repository.AddCinema(model);
-            // We should add current user to Role if user isn't a moderator already
-            // UserManager.AddToRoleAsync("id", "CinemaModerator");
-            return "Cinema added";
+            repository.AddCinema(model.Cinema);
+            UserManager.AddToRoleAsync(model.CurrentUserId, "CinemaModerator");
+            return RedirectToAction("ViewUser", "UserPage", new { userId = model.CurrentUserId });
         }
 
         private AppUserManager UserManager {
