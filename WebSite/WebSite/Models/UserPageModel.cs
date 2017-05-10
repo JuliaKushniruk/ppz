@@ -11,5 +11,6 @@ namespace WebSite.Models
     {
         public AppUser User {get; set;}
         public IEnumerable<Cinema> ModeratedCinemas { get; set; }
+        public string CurrentUserId { get; set; }
     }
 }

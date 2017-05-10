@@ -34,6 +34,7 @@ namespace WebSite.Controllers
                 //                         select cinema;
                 model.ModeratedCinemas = from cinema in repository.Cinemas
                                          select cinema;
+                model.CurrentUserId = User.Identity.GetUserId();
                 return View("UserPage", model);
             }
             else
@@ -41,6 +42,22 @@ namespace WebSite.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        [Authorize(Roles = "CinemaModerator,Administrator")]
+        public ActionResult DeleteCinema(int cinemaId = 0)
+        {
+            Cinema cinemaToDelete = repository.GetCinemaById(cinemaId);
+            if (cinemaToDelete != null)
+            {
+                //repository.Cinemas.Remove(cinemaToDelete);
+                return RedirectToAction("ViewUser", "UserPage", new { userId = User.Identity.GetUserId() });
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
 
         private AppUserManager UserManager
         {
