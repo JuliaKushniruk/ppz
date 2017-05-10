@@ -11,7 +11,7 @@ namespace WebSite.Models
     {
         [Key]
         public int EventId { get; set; }
-
+        public string Name { get; set; }
         public virtual Cinema Cinema { get; set; }
         public virtual Movie Movie { get; set; }
         public string Author { get; set; }

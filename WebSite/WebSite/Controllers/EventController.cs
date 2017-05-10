@@ -13,33 +13,25 @@ namespace WebSite.Controllers
     {
         MainRepository repository = new MainRepository();
         [AllowAnonymous]
-        public ViewResult ViewEvent(int? CinemaId )
+        public ViewResult ViewEvent(int EventID = 0)
         {
-            IEnumerable<Event> events;
-            if (CinemaId == null)
-            {
-                events = from eventss in repository.Events select eventss;
-            }
-            else
-            {
-                events = from eventss in repository.Events where eventss.Cinema.CinemaId == CinemaId select eventss;
-            }
-            List<EventLikedModel> eventsToDisplay = new List<EventLikedModel>();
-            foreach (var e in events)
-            {
-                eventsToDisplay.Add(
-                    new EventLikedModel
-                    {
-                        EventId = e.EventId,
-                        Cinema = e.Cinema.Name,
-                        Film = e.Movie.Name,
-                        IsApproved = e.IsApproved,
-                        Price = e.Price,
-                        Author = e.Author,
-                        IsLiked = e.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId()) != null,
-                        LikesAmount = e.Users.Count
-                    });
-            }
+            Event even = (from eventss in repository.Events where eventss.EventId == EventID select eventss).FirstOrDefault();
+
+            EventLikedModel eventsToDisplay;
+
+            eventsToDisplay =
+                new EventLikedModel
+                {
+                    EventId = even.EventId,
+                    Cinema = even.Cinema.Name,
+                    Film = even.Movie.Name,
+                    IsApproved = even.IsApproved,
+                    Price = even.Price,
+                    Author = even.Author,
+                    IsLiked = even.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId()) != null,
+                    LikesAmount = even.Users.Count
+                };
+
             return View("Event", eventsToDisplay);
         }
 
@@ -52,7 +44,7 @@ namespace WebSite.Controllers
             user.Events.Add(result);
             repository.Save();
             eventModel.LikesAmount++;
-            return RedirectToAction("ViewEvent", new { result.Cinema.CinemaId });
+            return RedirectToAction("ViewEvent", new { result.EventId });
         }
 
         [Authorize]
@@ -64,7 +56,7 @@ namespace WebSite.Controllers
             repository.UpdateEvent(result);
             repository.Save();
             eventModel.LikesAmount--;
-            return RedirectToAction("ViewEvent", new { result.Cinema.CinemaId });
+            return RedirectToAction("ViewEvent", new { result.EventId });
         }
     }
 }
