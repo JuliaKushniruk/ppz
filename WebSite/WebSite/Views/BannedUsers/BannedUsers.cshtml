@@ -1,0 +1,21 @@
+﻿@model WebSite.Models.BannedUsersModel
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Banned Users</title>
+</head>
+<body>
+    <div> 
+        @foreach (var user in Model.BannedUsers)
+        {
+            <p>@Html.ActionLink(@user.UserName, "ViewUser", "UserPage", new { userId = user.Id }, null)
+            @Html.ActionLink("Unban", "Unban", "BannedUsers", new { userId = user.Id }, new { @class = "btn btn-default" }) </p>
+        }
+    </div>
+</body>
+</html>

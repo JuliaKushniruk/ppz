@@ -192,6 +192,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Concrete\MainRepository.cs" />
+    <Compile Include="Controllers\BannedUsersController.cs" />
     <Compile Include="Controllers\CinemaController.cs" />
     <Compile Include="Controllers\EditUserController.cs" />
     <Compile Include="Controllers\EventController.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Infrastructure\CinemasSiteContext.cs" />
     <Compile Include="Infrastructure\AppUserManager.cs" />
     <Compile Include="Models\AppUser.cs" />
+    <Compile Include="Models\BannedUsersModel.cs" />
     <Compile Include="Models\EventLikedModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -244,6 +246,7 @@
     <Content Include="Views\UserPage\UserPage.cshtml" />
     <Content Include="Views\EditUser\Edit.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\BannedUsers\BannedUsers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
