@@ -20,5 +20,6 @@ namespace WebSite.Models
 
         public virtual ICollection<AppUser> Users { get; set; }
 
+        
     }
 }
