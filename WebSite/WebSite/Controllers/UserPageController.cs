@@ -35,6 +35,12 @@ namespace WebSite.Controllers
                 model.ModeratedCinemas = from cinema in repository.Cinemas
                                          select cinema;
                 model.CurrentUserId = User.Identity.GetUserId();
+                //model.IsAdministratorLogged = User.IsInRole("Administrator");
+                model.IsAdministratorLogged = true;
+                //model.IsBanned = from bannedUser in repository.BannedUsers
+                //                         where (bannedUser.Id == user.Id)
+                //                         select bannedUser;
+                model.IsBanned = false;
                 return View("UserPage", model);
             }
             else
@@ -57,7 +63,21 @@ namespace WebSite.Controllers
                 return RedirectToAction("Index");
             }
         }
-
+        
+        [Authorize(Roles = "Administrator")]
+        public async Task<ActionResult> BanUser(string userId = "user_id")
+        {
+            AppUser user = await UserManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                // repository.BannedUsers.Add(userPageModel.User);
+                return RedirectToAction("ViewUser", "UserPage", new { userId = user.Id });
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }   
+        }
 
         private AppUserManager UserManager
         {
