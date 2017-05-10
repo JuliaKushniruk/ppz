@@ -43,7 +43,7 @@ namespace WebSite.Controllers
             }
         }
 
-        [Authorize(Roles = "CinemaModerator,Administrator")]
+        [Authorize(Roles = "CinemaModerator")]
         public ActionResult DeleteCinema(int cinemaId = 0)
         {
             Cinema cinemaToDelete = repository.GetCinemaById(cinemaId);
