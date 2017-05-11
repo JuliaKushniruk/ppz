@@ -33,7 +33,7 @@ namespace WebSite.Controllers
             {
                 UserPageModel model = new UserPageModel();
                 model.User = user;
-                model.ModeratedCinemas = from cinema in repository.Cinemas
+                model.ModeratedCinemas = from cinema in repository.GetCinemas()
                                          where (cinema.Moderator.Id == user.Id)
                                          select cinema;
                 model.CurrentUserId = User.Identity.GetUserId();

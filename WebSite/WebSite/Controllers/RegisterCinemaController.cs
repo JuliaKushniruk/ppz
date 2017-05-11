@@ -20,17 +20,17 @@ namespace WebSite.Controllers
         public ViewResult Register()
         {
             RegisterCinemaModel model = new RegisterCinemaModel();
-            model.Cinema = new Cinema();
-            model.CurrentUserId = User.Identity.GetUserId();
-            return View("RegisterCinema", model);
+            //model.Cinema;
+            model.CurrentUser =repository.GetUserById( User.Identity.GetUserId());
+            return View("RegisterCinema",model);
         }
 
         [HttpPost]
         public ActionResult Register(RegisterCinemaModel model)
         {
-            AppUser user = UserManager.FindById(User.Identity.GetUserId());
-            if (user != null)
-                model.Cinema.Moderator = user;
+            //AppUser user = repository.GetUserById(User.Identity.GetUserId());
+            //if (user != null)
+                model.Cinema.Moderator = model.CurrentUser;
             repository.AddCinema(model.Cinema);
             UserManager.AddToRoleAsync(User.Identity.GetUserId(), "CinemaModerator");
             return RedirectToAction("ViewUser", "UserPage", new { userId = User.Identity.GetUserId() });

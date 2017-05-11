@@ -17,7 +17,7 @@ namespace WebSite.Controllers
         public ActionResult Index()
         {
             SearchModel model = new SearchModel();
-            model.CinemasFound = from cinema in repository.Cinemas
+            model.CinemasFound = from cinema in repository.GetCinemas()
                                  select cinema;
             return View("Search", model);
         }
@@ -25,7 +25,7 @@ namespace WebSite.Controllers
         [HttpPost]
         public ActionResult Index(SearchModel model)
         {
-            model.CinemasFound = from cinema in repository.Cinemas
+            model.CinemasFound = from cinema in repository.GetCinemas()
                                  where cinema.Name == model.Name
                                  select cinema;
             return View("Search", model);
