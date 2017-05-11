@@ -11,18 +11,24 @@
     <title>Home</title>
 </head>
 <body>
-    <div> 
-        <p>  @Html.ActionLink("Search cinemas", "Index", "SearchCinema", null, new { @class = "btn btn-default" }) </p>
-        @if (Model == null)
-        {
-            <p>  @Html.ActionLink("Log in", "Login", "Login", null, new { @class = "btn btn-default" }) </p>
-            <p>  @Html.ActionLink("Register", "Index", "RegisterUser", null, new { @class = "btn btn-default" }) </p>
-        }
-        else
-        {
-            <p>  @Html.ActionLink("My account", "ViewUser", "UserPage", new { userId = Model.Id }, new { @class = "btn btn-default" }) </p>
-            <p>  @Html.ActionLink("Log out", "Logout", "Home", null, new { @class = "btn btn-default" }) </p>
-        }
-</div>
+
+    <div class="page-header">
+        <legend><center><h1><b>Greetings, movie fan!</b></h1></center></legend>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi
+            dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost
+            rud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur
+            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+            id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labo
+            re et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamc
+            o laboris nisi ut aliquip ex ea commodo consequat.
+            <div>
+                @Html.ActionLink("Check it out!", "Index", "SearchCinema")
+            </div>
+        </div>
+    </div>  
+
 </body>
 </html>
