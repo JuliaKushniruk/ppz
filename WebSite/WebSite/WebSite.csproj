@@ -214,6 +214,7 @@
     <Compile Include="Infrastructure\CinemasSiteContext.cs" />
     <Compile Include="Infrastructure\AppUserManager.cs" />
     <Compile Include="Models\AppUser.cs" />
+    <Compile Include="Models\CinemaPageModel.cs" />
     <Compile Include="Models\BannedUsersModel.cs" />
     <Compile Include="Models\EventLikedModel.cs" />
     <Compile Include="Models\LoginModel.cs" />

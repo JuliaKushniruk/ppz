@@ -130,7 +130,8 @@ namespace WebSite.Infrastructure
                 Movie = movie,
                 IsApproved = false,
                 Price = 50,
-                Author = user.UserName
+                Author = user.UserName,
+                Name ="Relax"
 
             };
             context.Events.Add(eventt);
@@ -140,8 +141,8 @@ namespace WebSite.Infrastructure
                 Cinema = cinema2,
                 IsApproved = true,
                 Price = 100,
-                Author = user.UserName
-
+                Author = user.UserName,
+                Name = "Be Happy"
             };
             context.Events.Add(event2);
             Event event3 = new Event()
@@ -150,8 +151,8 @@ namespace WebSite.Infrastructure
                 Cinema = cinema,
                 IsApproved = true,
                 Price = 75,
-                Author = user.UserName
-
+                Author = user.UserName,
+                Name = "Funny"
             };
             context.Events.Add(event3);
 

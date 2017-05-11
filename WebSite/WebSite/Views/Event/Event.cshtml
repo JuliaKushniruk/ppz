@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebSite.Models.EventLikedModel>
+﻿@model WebSite.Models.EventLikedModel
 {
 
 }
@@ -13,28 +13,28 @@
 </head>
 <body>
     <div>
-        @foreach (var eventModel in Model)
-        {
-            <p> <b>Кінотеатр:</b>  @eventModel.Cinema </p>
-            <p> <b>Фільм:</b>@eventModel.Film </p>
-            if (eventModel.IsApproved)
+       
+       
+            <p> <b>Кінотеатр:</b>  @Model.Cinema </p>
+            <p> <b>Фільм:</b>@Model.Film </p>
+            @if (Model.IsApproved)
             { <p> <b>Статус:</b> Затверджено </p>}
             else
             { <p> <b>Статус:</b> Розглядається </p>}
-            <p> <b>Користувач, що запропонував:</b> @eventModel.Author</p>
-            <p> <b>Ціна:</b> @eventModel.Price грн</p>
+            <p> <b>Користувач, що запропонував:</b> @Model.Author</p>
+            <p> <b>Ціна:</b> @Model.Price грн</p>
 
-            if (!eventModel.IsLiked)
+            @if (!Model.IsLiked)
             {
-                @Html.ActionLink("LIKE", "LikeEvent", "Event", eventModel, new { @class = "btn btn-danger" })
+                @Html.ActionLink("LIKE", "LikeEvent", "Event", Model, new { @class = "btn btn-danger" })
             }
             else
             {
-                @Html.ActionLink("DISLIKE", "DislikeEvent", "Event", eventModel, new { @class = "btn btn-success" })
+                @Html.ActionLink("DISLIKE", "DislikeEvent", "Event", Model, new { @class = "btn btn-success" })
             }
-            <p> Кількість лайків: @eventModel.LikesAmount</p>
+            <p> Кількість лайків: @Model.LikesAmount</p>
 
-        }
+        
     </div>
 </body>
 </html>

@@ -13,12 +13,16 @@ namespace WebSite.Controllers
     {
         private MainRepository repository = new MainRepository();
 
-        public ActionResult ViewCinema(int cinemaId = 1)
+        public ActionResult ViewCinema(int cinemaId = 0)
         {
-            Cinema cinema = (from cin in repository.Cinemas
+            CinemaPageModel model = new CinemaPageModel();
+            model.CurrentCinema = (from cin in repository.Cinemas
                             where cin.CinemaId == cinemaId
                             select cin).FirstOrDefault<Cinema>();
-            return View("Cinema", cinema);
+            model.Events = (from even in repository.Events
+                            where even.Cinema == model.CurrentCinema
+                            select even);
+            return View("Cinema", model);
         }
 
         [Authorize(Roles = "CinemaModerator")]
