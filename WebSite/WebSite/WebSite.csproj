@@ -191,7 +191,6 @@
   <ItemGroup>
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Concrete\MainRepository.cs" />
     <Compile Include="Controllers\BannedUsersController.cs" />
     <Compile Include="Controllers\BuyTicketController.cs" />
     <Compile Include="Controllers\CinemaController.cs" />
@@ -210,23 +209,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
-    <Compile Include="Infrastructure\AppRole.cs" />
-    <Compile Include="Infrastructure\AppRoleManager.cs" />
-    <Compile Include="Infrastructure\CinemasSiteContext.cs" />
-    <Compile Include="Infrastructure\AppUserManager.cs" />
-    <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\CinemaPageModel.cs" />
     <Compile Include="Models\BannedUsersModel.cs" />
     <Compile Include="Models\EventLikedModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\Movie.cs" />
-    <Compile Include="Models\Cinema.cs" />
-    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\RegisterCinemaModel.cs" />
     <Compile Include="Models\RegisterEventModel.cs" />
     <Compile Include="Models\RegisterUserModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
-    <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\UserPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -243,7 +233,7 @@
     <Content Include="Views\RegisterEvent\RegisterEvent.cshtml" />
     <Content Include="Views\RegisterCinema\RegisterCinema.cshtml" />
     <Content Include="scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\_BasicLayout.cshtml" />
+    <Content Include="Views\Shared\_BasicLayout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\RegisterUser\Register.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
@@ -261,6 +251,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{a57a7d9f-0480-4578-8d70-c63643a49fec}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

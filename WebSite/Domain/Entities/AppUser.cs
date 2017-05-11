@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace WebSite.Models
+namespace Domain.Entities
 {
     public class AppUser : IdentityUser
     {  
         public virtual ICollection<Event> Events { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public bool IsBanned { get; set; }
     }
 }

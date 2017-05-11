@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebSite.Concrete;
 using WebSite.Models;
 using Microsoft.AspNet.Identity;
+using Domain.Concrete;
+using Domain.Entities;
 
 namespace WebSite.Controllers
 {
@@ -16,10 +17,10 @@ namespace WebSite.Controllers
         public ActionResult ViewCinema(int cinemaId = 0)
         {
             CinemaPageModel model = new CinemaPageModel();
-            model.CurrentCinema = (from cin in repository.Cinemas
+            model.CurrentCinema = (from cin in repository.GetCinemas()
                             where cin.CinemaId == cinemaId
                             select cin).FirstOrDefault<Cinema>();
-            model.Events = (from even in repository.Events
+            model.Events = (from even in repository.GetEvents()
                             where even.Cinema == model.CurrentCinema
                             select even);
             return View("Cinema", model);

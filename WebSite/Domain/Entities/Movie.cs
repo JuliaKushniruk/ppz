@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace WebSite.Models
+namespace Domain.Entities
 {
     public class Movie
     {

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebSite.Models
+namespace Domain.Entities
 {
     public class Cinema
     {
@@ -22,6 +17,6 @@ namespace WebSite.Models
 
         public virtual AppUser Moderator { get; set; }
 
-     //   public int AAA { get; set; }
+       // public int AAA { get; set; }
     }
 }

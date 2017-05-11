@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        body { padding-top: 65px; }
+    </style>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                @Html.ActionLink("MOVIE-WORLD", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href='@Url.Action("Index","Home")'>
+                            <span class="glyphicon glyphicon-home"></span>  Home 
+                        </a>
+                    </li>
+                    <li>
+                        <a href='@Url.Action("Index","SearchCinema")'>
+                            <span class="glyphicon glyphicon-search"></span>  Search cinemas
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a href='@Url.Action("ViewUser", "UserPage")'>
+                                <span class="glyphicon glyphicon-user"></span>  @User.Identity.Name
+                            </a>
+                        </li>
+                        <li>
+                            <a href='@Url.Action("Logout","Home")'>
+                                <span class="glyphicon glyphicon-log-out"></span>  Log out
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href='@Url.Action("Index","RegisterUser")'>
+                                <span class="glyphicon glyphicon-user"></span>  Sign up
+                            </a>
+                        </li>
+                        <li>
+                            <a href='@Url.Action("Login","Login")'>
+                                <span class="glyphicon glyphicon-log-in"></span>  Log in
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

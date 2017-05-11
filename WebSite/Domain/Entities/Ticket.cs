@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebSite.Models
+namespace Domain.Entities
 {
     public class Ticket
     {

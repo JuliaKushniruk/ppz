@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebSite.Models;
-using WebSite.Infrastructure;
-using WebSite.Concrete;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
+using Domain.Concrete;
+using Domain.Entities;
 
 namespace WebSite.Controllers
 {
@@ -24,12 +24,16 @@ namespace WebSite.Controllers
 
         public async Task<ActionResult> ViewUser(string userId = "user_id")
         {
+            if (userId == "user_id")
+            {
+                userId = User.Identity.GetUserId();
+            }
             AppUser user = await UserManager.FindByIdAsync(userId);
             if (user != null)
             {
                 UserPageModel model = new UserPageModel();
                 model.User = user;
-                model.ModeratedCinemas = from cinema in repository.Cinemas
+                model.ModeratedCinemas = from cinema in repository.GetCinemas()
                                          where (cinema.Moderator.Id == user.Id)
                                          select cinema;
                 model.CurrentUserId = User.Identity.GetUserId();

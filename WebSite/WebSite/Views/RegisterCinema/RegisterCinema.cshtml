@@ -25,7 +25,7 @@
             <p>Seats : @Html.TextBoxFor(x => x.Cinema.Seats) </p>
             <input type="submit" value="Confirm" />
         }
-        <p>  @Html.ActionLink("Cancel", "ViewUser", "UserPage", new { userId = Model.CurrentUserId }, new { @class = "btn btn-default" }) </p>
+        <p>  @Html.ActionLink("Cancel", "ViewUser", "UserPage", new { userId = Model.CurrentUser.Id }, new { @class = "btn btn-default" }) </p>
 
     </div>
 </body>

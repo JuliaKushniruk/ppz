@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Data.Entity;
+using Domain.Entities;
 
 namespace WebSite.Models
 {

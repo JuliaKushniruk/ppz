@@ -1,13 +1,13 @@
 ﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using WebSite.Models;
 using Microsoft.AspNet.Identity;
+using Domain.Entities;
 
-namespace WebSite.Infrastructure
+namespace Domain.Concrete
 {
     public class CinemasSiteContext : IdentityDbContext<AppUser>
     {
-        public CinemasSiteContext() : base("WebSite") { }
+        public CinemasSiteContext() : base("WebbbbSite") { }
 
         public DbSet<Cinema> Cinemas { get; set; }
         public DbSet<Event> Events { get; set; }
@@ -37,14 +37,18 @@ namespace WebSite.Infrastructure
         {
             AppUserManager userManager = new AppUserManager(new UserStore<AppUser>(context));
 
+            string firstName = "Yuriy";
+            string lastName = "Neklesa";
             string userName = "username";
             string email = "email@qqq";
             string pass = "123Qqq";
+            string phoneNumber = "2283221337";
             bool isbanned = false;
             var user = userManager.FindByName(userName);
             if (user == null)
             {
-                userManager.Create(new AppUser { UserName = userName, Email = email,IsBanned = isbanned }, pass);
+                userManager.Create(new AppUser { FirstName = firstName, LastName = lastName,
+                    UserName = userName, Email = email, PhoneNumber = phoneNumber, IsBanned = isbanned }, pass);
                 user = userManager.FindByName(userName);
             }
 

@@ -7,8 +7,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebSite.Models;
 using System.Threading.Tasks;
-using WebSite.Infrastructure;
 using Microsoft.AspNet.Identity;
+using Domain.Concrete;
+using Domain.Entities;
 
 namespace WebSite.Controllers
 {
