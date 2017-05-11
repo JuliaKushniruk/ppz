@@ -12,6 +12,7 @@ namespace Domain.Concrete
         public DbSet<Cinema> Cinemas { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
 
         static CinemasSiteContext()
         {
@@ -158,6 +159,23 @@ namespace Domain.Concrete
                 Name = "Funny"
             };
             context.Events.Add(event3);
+
+            Ticket ticket1 = new Ticket()
+            {
+                Event = event2,
+                Owner = user,
+                Row = 3,
+                Seat = 12
+            };
+            context.Tickets.Add(ticket1);
+            Ticket ticket2 = new Ticket()
+            {
+                Event = event3,
+                Owner = user,
+                Row = 6,
+                Seat = 13
+            };
+            context.Tickets.Add(ticket2);
 
             string registeredUser = "RegisteredUser";
             string cinemaModerator = "CinemaModerator";

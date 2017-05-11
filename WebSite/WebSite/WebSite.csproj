@@ -192,6 +192,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BannedUsersController.cs" />
+    <Compile Include="Controllers\BuyTicketController.cs" />
     <Compile Include="Controllers\CinemaController.cs" />
     <Compile Include="Controllers\ContextSingleton.cs" />
     <Compile Include="Controllers\EditUserController.cs" />
@@ -240,7 +241,11 @@
     <Content Include="Views\EditUser\Edit.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\BannedUsers\BannedUsers.cshtml" />
+
     <Content Include="Views\Event\ApproveEvent.cshtml" />
+
+    <Content Include="Views\BuyTicket\BuyTicket.cshtml" />
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -250,7 +255,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

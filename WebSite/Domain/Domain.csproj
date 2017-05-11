@@ -98,6 +98,7 @@
     <Compile Include="Entities\Cinema.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\Movie.cs" />
+    <Compile Include="Entities\Ticket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
