@@ -22,24 +22,34 @@ namespace WebSite.Controllers
             AppUser user = UserManager.FindById(User.Identity.GetUserId());
             if (selectedEvent != null && user != null)
             {
-                Ticket ticket = new Ticket()
+                BuyTicketModel ticket = new BuyTicketModel()
                 {
-                    Event = selectedEvent,
-                    Owner = user
+                    EventId = selectedEvent.EventId,
+                    EventName = selectedEvent.Name,
+                    EventPrice = selectedEvent.Price,
+                    MovieName = selectedEvent.Movie.Name,
+                    OwnerId = user.Id,
                 };
                 return View("BuyTicket", ticket);
             }
             else
             {
                 return View("BuyTicket");
-            }     
+            }
         }
 
         [HttpPost]
-        public ActionResult BuyTicket(Ticket model)
+        public ActionResult BuyTicket(BuyTicketModel model)
         {
-            repository.AddTicket(model);
-            return RedirectToAction("ViewEvent", "Event", new { EventID = model.Event.EventId});
+            Ticket ticket = new Ticket
+            {
+                Event = repository.GetEventById(model.EventId),
+                Owner = repository.GetUserById(model.OwnerId),
+                Row = model.Row,
+                Seat = model.Seat
+            };
+            repository.AddTicket(ticket);
+            return RedirectToAction("ViewEvent", "Event", new { EventID = model.EventId });
         }
 
         private AppUserManager UserManager

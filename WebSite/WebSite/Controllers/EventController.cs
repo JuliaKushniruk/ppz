@@ -17,7 +17,7 @@ namespace WebSite.Controllers
         [AllowAnonymous]
         public ViewResult ViewEvent(int EventID = 0)
         {
-            Event even = (from eventss in repository.GetEvents() where eventss.EventId == EventID select eventss).FirstOrDefault();
+            Event even = repository.GetEventById(EventID);
 
             EventLikedModel eventsToDisplay;
 

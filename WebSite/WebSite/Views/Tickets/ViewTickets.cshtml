@@ -1,0 +1,27 @@
+﻿@model WebSite.Models.ViewTicketsModel
+    @{
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>ViewTickets</title>
+    </head>
+    <body>
+        <div>
+            <ul>
+                @foreach (var ticket in Model.Tickets)
+                {
+                    <li>
+                        <p>Event: @ticket.Event.Name</p>  
+                        <p>Cinema: @ticket.Event.Cinema.Name</p>
+                        <p>Row: @ticket.Row</p>
+                        <p>Seat: @ticket.Seat</p>
+                    </li>
+                }
+            </ul>
+        </div>
+    </body>
+</html>

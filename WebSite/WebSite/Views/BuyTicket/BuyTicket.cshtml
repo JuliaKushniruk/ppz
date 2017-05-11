@@ -1,4 +1,4 @@
-﻿@model WebSite.Models.Ticket
+﻿@model WebSite.Models.BuyTicketModel
 @{
 }
 
@@ -10,22 +10,45 @@
     <title>BuyTicket</title>
 </head>
 <body>
-    <div> 
-        <p>Ticket for event: @Model.Event.Name</p>
-        <p>Price: @Model.Event.Price</p>
-        <p>Movie: @Model.Event.Movie</p>
-@using (Html.BeginForm())
-{
-    <div class="form-group">
-        <label>Row</label>
-        @Html.TextBoxFor(x => x.Row, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Seat</label>
-        @Html.TextBoxFor(x => x.Seat, new { @class = "form-control" })
-    </div>
+    <div>
+        <p>Ticket for event: @Model.EventName</p>
+        <p>Price: @Model.EventPrice</p>
+        <p>Movie: @Model.MovieName</p>
+@*
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <label>Row</label>
+            @Html.TextBoxFor(x => x.Row, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Seat</label>
+            @Html.TextBoxFor(x => x.Seat, new { @class = "form-control" })
+        </div>
 
         <button type="submit" class="btn btn-primary">Buy</button>
+
+    }*@
+
+        <form action="/BuyTicket/BuyTicket" method="post">
+            <div class="form-group">
+                <label>Row</label>
+                @Html.TextBoxFor(x => x.Row, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Seat</label>
+                @Html.TextBoxFor(x => x.Seat, new { @class = "form-control" })
+            </div>
+            @Html.HiddenFor(x => x.TicketId)
+            @Html.HiddenFor(x => x.EventId)
+            @Html.HiddenFor(x => x.EventName)
+            @Html.HiddenFor(x => x.EventPrice)
+            @Html.HiddenFor(x => x.MovieName)
+            @Html.HiddenFor(x => x.OwnerId)
+
+                <button type="submit" class="btn btn-primary">Buy</button>
+
+</form>
     </div>
 </body>
 </html>

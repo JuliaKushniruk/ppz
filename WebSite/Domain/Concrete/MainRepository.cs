@@ -54,7 +54,13 @@ namespace Domain.Concrete
             var users = from user in context.Users select user;
             return users.ToList();
         }
-
+        public IEnumerable<Ticket> GetTicketsByUserId(string userId)
+        {
+            var tickets = from ticket in context.Tickets
+                          where ticket.Owner.Id == userId
+                          select ticket;
+            return tickets.ToList();
+        }
         public void UpdateEvent(Event eventObj)
         {
             context.Entry(eventObj).State = EntityState.Modified;
