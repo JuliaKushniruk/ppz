@@ -89,6 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IMainRepository.cs" />
     <Compile Include="Concrete\CinemasSiteContext.cs" />
     <Compile Include="Concrete\MainRepository.cs" />
     <Compile Include="Entities\AppRole.cs" />

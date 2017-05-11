@@ -4,11 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Domain.Entities;
-
+using Domain.Abstract;
 
 namespace Domain.Concrete
 {
-    public class MainRepository
+    public class MainRepository: IMainRepository
     {
         private CinemasSiteContext context = new CinemasSiteContext();
 

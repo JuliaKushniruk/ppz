@@ -17,10 +17,14 @@
        
             <p> <b>Кінотеатр:</b>  @Model.Cinema </p>
             <p> <b>Фільм:</b>@Model.Film </p>
-            @if (Model.IsApproved)
+            @if (Model.IsApproved == true)
             { <p> <b>Статус:</b> Затверджено </p>}
-            else
+            else if (Model.IsApproved == null)
             { <p> <b>Статус:</b> Розглядається </p>}
+            else
+            {
+                { <p> <b>Статус:</b> Не Затверджено </p>}
+            }
             <p> <b>Користувач, що запропонував:</b> @Model.Author</p>
             <p> <b>Ціна:</b> @Model.Price грн</p>
 
