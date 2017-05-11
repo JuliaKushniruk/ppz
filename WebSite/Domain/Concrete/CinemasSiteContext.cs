@@ -178,8 +178,7 @@ namespace Domain.Concrete
             {
                 roleManager.Create(new AppRole(administrator));
             }
-
-
+            
             base.Seed(context);
         }
 
