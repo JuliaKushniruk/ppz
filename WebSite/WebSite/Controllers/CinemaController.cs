@@ -23,6 +23,7 @@ namespace WebSite.Controllers
             model.Events = (from even in repository.GetEvents()
                             where even.Cinema == model.CurrentCinema
                             select even);
+            model.IsModerator = User.Identity.GetUserId() == model.CurrentCinema.Moderator.Id;
             return View("Cinema", model);
         }
 

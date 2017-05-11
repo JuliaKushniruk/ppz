@@ -240,6 +240,7 @@
     <Content Include="Views\EditUser\Edit.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\BannedUsers\BannedUsers.cshtml" />
+    <Content Include="Views\Event\ApproveEvent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
