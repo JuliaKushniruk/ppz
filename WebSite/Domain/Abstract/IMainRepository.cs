@@ -28,6 +28,5 @@ namespace Domain.Abstract
         void DeleteMovie(Movie movie);
         void DeleteCinema(Cinema cinema);
         void Save();
-
     }
 }

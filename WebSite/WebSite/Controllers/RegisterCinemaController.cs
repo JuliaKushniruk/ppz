@@ -8,14 +8,19 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using Domain.Concrete;
 using Domain.Entities;
+using Domain.Abstract;
 
 namespace WebSite.Controllers
 {
     [Authorize]
     public class RegisterCinemaController : Controller
     {
-        private MainRepository repository = new MainRepository();
+        private IMainRepository repository;
 
+        public RegisterCinemaController(IMainRepository repo)
+        {
+            repository = repo;
+        }
         [HttpGet]
         public ViewResult Register()
         {
