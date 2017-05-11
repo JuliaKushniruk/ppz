@@ -24,6 +24,10 @@ namespace WebSite.Controllers
 
         public async Task<ActionResult> ViewUser(string userId = "user_id")
         {
+            if (userId == "user_id")
+            {
+                userId = User.Identity.GetUserId();
+            }
             AppUser user = await UserManager.FindByIdAsync(userId);
             if (user != null)
             {

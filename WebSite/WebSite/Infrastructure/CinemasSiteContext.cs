@@ -36,13 +36,17 @@ namespace WebSite.Infrastructure
         {
             AppUserManager userManager = new AppUserManager(new UserStore<AppUser>(context));
 
+            string firstName = "Yuriy";
+            string lastName = "Neklesa";
             string userName = "username";
             string email = "email@qqq";
             string pass = "123Qqq";
+            string phoneNumber = "2283221337";
             var user = userManager.FindByName(userName);
             if (user == null)
             {
-                userManager.Create(new AppUser { UserName = userName, Email = email }, pass);
+                userManager.Create(new AppUser { FirstName = firstName, LastName = lastName,
+                    UserName = userName, Email = email, PhoneNumber = phoneNumber }, pass);
                 user = userManager.FindByName(userName);
             }
 

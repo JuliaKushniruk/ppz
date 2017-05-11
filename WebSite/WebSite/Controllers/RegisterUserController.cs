@@ -24,7 +24,10 @@ namespace WebSite.Controllers
                 AppUser user = new AppUser
                 {
                     UserName = model.Name,
-                    Email = model.Email
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
                 };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

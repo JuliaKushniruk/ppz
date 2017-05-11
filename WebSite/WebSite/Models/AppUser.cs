@@ -9,5 +9,7 @@ namespace WebSite.Models
     public class AppUser : IdentityUser
     {  
         public virtual ICollection<Event> Events { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

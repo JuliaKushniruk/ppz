@@ -237,7 +237,7 @@
     <Content Include="Views\RegisterEvent\RegisterEvent.cshtml" />
     <Content Include="Views\RegisterCinema\RegisterCinema.cshtml" />
     <Content Include="scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\_BasicLayout.cshtml" />
+    <Content Include="Views\Shared\_BasicLayout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\RegisterUser\Register.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
