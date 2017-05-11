@@ -25,7 +25,6 @@ namespace WebSite.Controllers
         [HttpPost]
         public ActionResult Index(SearchModel model)
         {
-            
             model.CinemasFound = from cinema in repository.GetCinemas()
                                  where cinema.Name.ToLower().Contains(model.Name.ToLower())
                                  select cinema;

@@ -26,12 +26,13 @@ namespace WebSite.Controllers
                 {
                     EventId = even.EventId,
                     Cinema = even.Cinema.Name,
-                    CinemaID=even.Cinema.CinemaId,
+                    CinemaID = even.Cinema.CinemaId,
                     Film = even.Movie.Name,
                     IsApproved = even.IsApproved,
                     Author = even.Author,
                     IsLiked = even.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId()) != null,
-                    LikesAmount = even.Users.Count
+                    LikesAmount = even.Users.Count,
+                    MovieId = even.Movie.MovieId
                 };
 
             return View("Event", eventsToDisplay);

@@ -15,8 +15,8 @@
     <div>
        
        
-            <p> <b>Кінотеатр:</b>  @Model.Cinema </p>
-            <p> <b>Фільм:</b>@Model.Film </p>
+            <p> <b>Кінотеатр:</b> @Html.ActionLink(@Model.Cinema, "ViewCinema", "Cinema", new { cinemaId = Model.CinemaID }, new { @class = "btn btn-default" })  </p>
+            <p> <b>Фільм:</b> @Html.ActionLink(@Model.Film, "ViewMovie", "Movie", new { movieId = Model.MovieId }, new { @class = "btn btn-default" })  </p>
             @if (Model.IsApproved == true)
             { <p> <b>Статус:</b> Затверджено </p>}
             else if (Model.IsApproved == null)
