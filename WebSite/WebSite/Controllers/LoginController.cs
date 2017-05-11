@@ -32,6 +32,10 @@ namespace WebSite.Controllers
                 {
                     ModelState.AddModelError("", "Invalid name or password.");
                 }
+                else if(user.IsBanned == true)
+                {
+                    ModelState.AddModelError("", "Sorry, seems like you account has been banned.");
+                }
                 else
                 {
                     ClaimsIdentity ident = await UserManager.CreateIdentityAsync(user,

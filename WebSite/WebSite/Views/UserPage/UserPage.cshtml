@@ -14,7 +14,7 @@
         <br />
         <br />
         <br />
-        @if (Model.IsBanned)
+        @if (Model.User.IsBanned)
         {
             <p>User has been banned.</p>
         }
@@ -26,7 +26,7 @@
         @Html.ActionLink("Edit", "Edit", "EditUser", new { userId = Model.User.Id }, new { @class = "btn btn-default" })
 
         <p>Moderated cinemas:</p>
-            if(Model.ModeratedCinemas != null)
+            if (Model.ModeratedCinemas != null)
             {
                 <ul>
                     @foreach (var cinema in @Model.ModeratedCinemas)
@@ -42,14 +42,14 @@
             }
             else
             {
-        <p> No moderated cinemas yet. </p>
+                    <p> No moderated cinemas yet. </p>
             }
 
         <p>@Html.ActionLink("Add cinema", "Register", "RegisterCinema", null, new { @class = "btn btn-default" }) </p>
-        if (Model.IsAdministratorLogged)
-        {
+            if (Model.IsAdministratorLogged)
+            {
             <p> @Html.ActionLink("Ban user", "BanUser", "UserPage", new { userId = Model.User.Id }, new { @class = "btn btn-default" }) </p>
-        }
+            }
         }
 
     </div>

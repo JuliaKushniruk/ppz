@@ -10,8 +10,8 @@ namespace WebSite.Controllers
 {
     public class SearchCinemaController : Controller
     {
-        MainRepository repository = new MainRepository();
-        // GET: SearchCinema
+        private MainRepository repository = new MainRepository();
+
         [HttpGet]
         public ActionResult Index()
         {

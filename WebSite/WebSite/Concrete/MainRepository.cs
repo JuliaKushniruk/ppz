@@ -33,9 +33,15 @@ namespace WebSite.Concrete
         {
             return context.Users.FirstOrDefault(x => x.Id == userId);
         }
-        public void UpdateEvent(Event events)
+        public void UpdateEvent(Event eventObj)
         {
-            context.Entry(events).State = EntityState.Modified;
+            context.Entry(eventObj).State = EntityState.Modified;
+            Save();
+        }
+        public void UpdateUser(AppUser user)
+        {
+            context.Entry(user).State = EntityState.Modified;
+            Save();
         }
         public void AddEvent(Event cinemaEvent)
         {

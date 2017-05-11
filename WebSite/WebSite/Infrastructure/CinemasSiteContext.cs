@@ -98,7 +98,8 @@ namespace WebSite.Infrastructure
                 Description = "The most modern cinema you've ever seen.",
                 Address = "Times Square 21,7",
                 Rows = 20,
-                Seats = 30
+                Seats = 30,
+                Moderator = user
             };
             context.Cinemas.Add(cinema);
             Cinema cinema2 = new Cinema()
@@ -107,7 +108,8 @@ namespace WebSite.Infrastructure
                 Description = "Old good cinema.",
                 Address = "Teatralna str. 21",
                 Rows = 30,
-                Seats = 20
+                Seats = 20,
+                Moderator = user
             };
             context.Cinemas.Add(cinema2);
             Cinema cinema3 = new Cinema()
@@ -116,7 +118,8 @@ namespace WebSite.Infrastructure
                 Description = "Club'n'Movie",
                 Address = "Nekrasova 22",
                 Rows = 50,
-                Seats = 30
+                Seats = 30,
+                Moderator = user
             };
 
             context.Cinemas.Add(cinema3);

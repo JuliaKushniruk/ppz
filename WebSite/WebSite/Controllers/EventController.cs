@@ -11,18 +11,22 @@ namespace WebSite.Controllers
 {
     public class EventController : Controller
     {
-        MainRepository repository = new MainRepository();
+        private MainRepository repository = new MainRepository();
+
         [AllowAnonymous]
         public ViewResult ViewEvent(int? CinemaId )
         {
             IEnumerable<Event> events;
             if (CinemaId == null)
             {
-                events = from eventss in repository.Events select eventss;
+                events = from eventss in repository.Events
+                         select eventss;
             }
             else
             {
-                events = from eventss in repository.Events where eventss.Cinema.CinemaId == CinemaId select eventss;
+                events = from eventss in repository.Events
+                         where eventss.Cinema.CinemaId == CinemaId
+                         select eventss;
             }
             List<EventLikedModel> eventsToDisplay = new List<EventLikedModel>();
             foreach (var e in events)
@@ -62,7 +66,6 @@ namespace WebSite.Controllers
             var user = repository.GetUserById(User.Identity.GetUserId());
             result.Users.Remove(user);
             repository.UpdateEvent(result);
-            repository.Save();
             eventModel.LikesAmount--;
             return RedirectToAction("ViewEvent", new { result.Cinema.CinemaId });
         }

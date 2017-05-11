@@ -12,16 +12,18 @@ using System.Threading.Tasks;
 
 namespace WebSite.Controllers
 {
-    //[Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator")]
     public class BannedUsersController : Controller
     {
-        MainRepository repository = new MainRepository();
+        private MainRepository repository = new MainRepository();
 
         public ActionResult ViewBannedUsers()
         {
             BannedUsersModel model = new BannedUsersModel();
-            model.BannedUsers = UserManager.Users;
-            //where user.isBanned
+            IEnumerable<AppUser> users = UserManager.Users;
+            model.BannedUsers = from user in users
+                                where user.IsBanned == true
+                                select user;
             return View("BannedUsers", model);
         }
 
@@ -30,8 +32,8 @@ namespace WebSite.Controllers
             AppUser user = await UserManager.FindByIdAsync(userId);
             if (user != null)
             {
-         //       user.isBanned = false;
-         //       repository.UpdateUser(user);
+                user.IsBanned = false;
+                repository.UpdateUser(user);
             }
             return RedirectToAction("ViewBannedUsers");
         }

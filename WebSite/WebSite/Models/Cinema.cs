@@ -21,5 +21,7 @@ namespace WebSite.Models
         public ICollection<Event> Events { get; set; }
 
         public virtual AppUser Moderator { get; set; }
+
+     //   public int AAA { get; set; }
     }
 }

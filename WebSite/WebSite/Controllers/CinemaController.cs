@@ -11,7 +11,7 @@ namespace WebSite.Controllers
 {
     public class CinemaController : Controller
     {
-        MainRepository repository = new MainRepository();
+        private MainRepository repository = new MainRepository();
 
         public ActionResult ViewCinema(int cinemaId = 1)
         {

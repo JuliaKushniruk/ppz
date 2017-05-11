@@ -14,7 +14,7 @@ namespace WebSite.Controllers
 {
     public class UserPageController : Controller
     {
-        MainRepository repository = new MainRepository();
+        private MainRepository repository = new MainRepository();
 
         [Authorize]
         public string Index()
@@ -29,18 +29,12 @@ namespace WebSite.Controllers
             {
                 UserPageModel model = new UserPageModel();
                 model.User = user;
-                //model.ModeratedCinemas = from cinema in repository.Cinemas
-                //                         where (cinema.ModeratorId == user.Id)
-                //                         select cinema;
                 model.ModeratedCinemas = from cinema in repository.Cinemas
+                                         where (cinema.Moderator.Id == user.Id)
                                          select cinema;
                 model.CurrentUserId = User.Identity.GetUserId();
                 //model.IsAdministratorLogged = User.IsInRole("Administrator");
                 model.IsAdministratorLogged = true;
-                //model.IsBanned = from bannedUser in repository.BannedUsers
-                //                         where (bannedUser.Id == user.Id)
-                //                         select bannedUser;
-                model.IsBanned = false;
                 return View("UserPage", model);
             }
             else
