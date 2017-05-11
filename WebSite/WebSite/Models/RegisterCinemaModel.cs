@@ -9,6 +9,6 @@ namespace WebSite.Models
     public class RegisterCinemaModel
     {
         public Cinema Cinema {get; set;}
-        public string CurrentUserId { get; set; }
+        public AppUser CurrentUser { get; set; }
     }
 }
