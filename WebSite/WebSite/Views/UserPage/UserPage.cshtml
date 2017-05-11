@@ -14,28 +14,44 @@
         <br />
         <br />
         <br />
+        @if (Model.User.IsBanned)
+        {
+            <p>User has been banned.</p>
+        }
+        else
+        {
         <p>Name: @Model.User.UserName</p>
         <p>Email: @Model.User.Email</p>
         <p>PasswordHash: @Model.User.PasswordHash</p>
         @Html.ActionLink("Edit", "Edit", "EditUser", new { userId = Model.User.Id }, new { @class = "btn btn-default" })
-        
+
         <p>Moderated cinemas:</p>
-            @if (@Model.ModeratedCinemas != null)
+            if (Model.ModeratedCinemas != null)
             {
                 <ul>
                     @foreach (var cinema in @Model.ModeratedCinemas)
                     {
-                        <li>@Html.ActionLink(cinema.Name, "ViewCinema", "Cinema", new { cinemaId = cinema.CinemaId }, null) </li>
+                        <li>@Html.ActionLink(cinema.Name, "ViewCinema", "Cinema", new { cinemaId = cinema.CinemaId }, null)
+                    @if (Model.User.Id == Model.CurrentUserId)
+                    {
+                        @Html.ActionLink("Delete cinema", "DeleteCinema", "UserPage", new { cinemaId = cinema.CinemaId }, new { @class = "btn btn-default" })
+                    }               
+                     </li>
                     }
                 </ul>
             }
             else
             {
-        <p> No moderated cinemas yet. </p>
+                    <p> No moderated cinemas yet. </p>
+            }
+
+        <p>@Html.ActionLink("Add cinema", "Register", "RegisterCinema", null, new { @class = "btn btn-default" }) </p>
+            if (Model.IsAdministratorLogged)
+            {
+            <p> @Html.ActionLink("Ban user", "BanUser", "UserPage", new { userId = Model.User.Id }, new { @class = "btn btn-default" }) </p>
+            }
         }
-        
-        @Html.ActionLink("Add cinema", "Register", "RegisterCinema", null, new { @class = "btn btn-default" })
-       
+
     </div>
 </body>
 </html>

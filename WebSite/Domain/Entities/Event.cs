@@ -5,13 +5,13 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace WebSite.Models
+namespace Domain.Entities
 {
     public class Event
     {
         [Key]
         public int EventId { get; set; }
-
+        public string Name { get; set; }
         public virtual Cinema Cinema { get; set; }
         public virtual Movie Movie { get; set; }
         public string Author { get; set; }
@@ -20,5 +20,6 @@ namespace WebSite.Models
 
         public virtual ICollection<AppUser> Users { get; set; }
 
+        
     }
 }

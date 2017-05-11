@@ -1,4 +1,4 @@
-﻿@model WebSite.Models.Cinema
+﻿@model WebSite.Models.CinemaPageModel
 @{
 
 }
@@ -12,14 +12,33 @@
     <title>Cinema</title>
 </head>
 <body>
-    <h1>@Model.Name</h1>
-    <p>@Model.Description</p>
+    <h1>@Model.CurrentCinema.Name</h1>
+    <p>@Model.CurrentCinema.Description</p>
     
-    <p>@Model.Address</p>
+    <p>@Model.CurrentCinema.Address</p>
 
 
-    <p>@Html.ActionLink("Register Event", "Register", "RegisterEvent", new { cinemaId = Model.CinemaId }, null) </p>
+    @if (true)
+    {
+        @Html.ActionLink("Delete cinema", "DeleteCinema", "UserPage", new { cinemaId = Model.CurrentCinema.CinemaId }, new { @class = "btn btn-default" })
+    }
 
-    <p>@Html.ActionLink("View all events in this Cinema", "ViewEvent", "Event", new { cinemaId = Model.CinemaId }, null) </p>
+    <p>@Html.ActionLink("Register Event", "Register", "RegisterEvent", new { cinemaId = Model.CurrentCinema.CinemaId }, null) </p>
+
+    <p>Events:</p>
+    @if (Model.Events != null)
+    {
+        foreach(var even in Model.Events)
+        {
+            <li>@Html.ActionLink(even.Name, "ViewEvent", "Event", new { eventId = even.EventId }, null)
+                </li>
+        }
+    }
+    else
+    {
+<p> No Events yet. </p>
+    }
+
+   @* <p>@Html.ActionLink("View all events in this Cinema", "ViewEvent", "Event", new { cinemaId = Model.CurrentCinema.CinemaId }, null) </p>*@
 </body>
 </html>

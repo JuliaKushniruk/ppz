@@ -6,9 +6,8 @@ using Domain.Entities;
 
 namespace WebSite.Models
 {
-    public class RegisterCinemaModel
+    public class BannedUsersModel
     {
-        public Cinema Cinema {get; set;}
-        public string CurrentUserId { get; set; }
+        public IEnumerable<AppUser> BannedUsers { get; set; }
     }
 }

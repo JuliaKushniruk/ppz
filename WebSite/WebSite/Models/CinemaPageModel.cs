@@ -6,9 +6,9 @@ using Domain.Entities;
 
 namespace WebSite.Models
 {
-    public class RegisterCinemaModel
+    public class CinemaPageModel
     {
-        public Cinema Cinema {get; set;}
-        public string CurrentUserId { get; set; }
+        public IEnumerable<Event> Events { get; set; }
+        public Cinema CurrentCinema { get; set; }
     }
 }

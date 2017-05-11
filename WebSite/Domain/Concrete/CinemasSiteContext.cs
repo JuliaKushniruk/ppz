@@ -1,13 +1,13 @@
 ﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using WebSite.Models;
 using Microsoft.AspNet.Identity;
+using Domain.Entities;
 
-namespace WebSite.Infrastructure
+namespace Domain.Concrete
 {
     public class CinemasSiteContext : IdentityDbContext<AppUser>
     {
-        public CinemasSiteContext() : base("WebSite") { }
+        public CinemasSiteContext() : base("WebbbbSite") { }
 
         public DbSet<Cinema> Cinemas { get; set; }
         public DbSet<Event> Events { get; set; }
@@ -26,7 +26,7 @@ namespace WebSite.Infrastructure
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<AppUser>().ToTable("Users");
+            modelBuilder.Entity<AppUser>().ToTable("Users");           
         }
     }
 
@@ -42,11 +42,12 @@ namespace WebSite.Infrastructure
             string email = "email@qqq";
             string pass = "123Qqq";
             string phoneNumber = "2283221337";
+            bool isbanned = false;
             var user = userManager.FindByName(userName);
             if (user == null)
             {
                 userManager.Create(new AppUser { FirstName = firstName, LastName = lastName,
-                    UserName = userName, Email = email, PhoneNumber = phoneNumber }, pass);
+                    UserName = userName, Email = email, PhoneNumber = phoneNumber, IsBanned = isbanned }, pass);
                 user = userManager.FindByName(userName);
             }
 
@@ -101,7 +102,8 @@ namespace WebSite.Infrastructure
                 Description = "The most modern cinema you've ever seen.",
                 Address = "Times Square 21,7",
                 Rows = 20,
-                Seats = 30
+                Seats = 30,
+                Moderator = user
             };
             context.Cinemas.Add(cinema);
             Cinema cinema2 = new Cinema()
@@ -110,7 +112,8 @@ namespace WebSite.Infrastructure
                 Description = "Old good cinema.",
                 Address = "Teatralna str. 21",
                 Rows = 30,
-                Seats = 20
+                Seats = 20,
+                Moderator = user
             };
             context.Cinemas.Add(cinema2);
             Cinema cinema3 = new Cinema()
@@ -119,7 +122,8 @@ namespace WebSite.Infrastructure
                 Description = "Club'n'Movie",
                 Address = "Nekrasova 22",
                 Rows = 50,
-                Seats = 30
+                Seats = 30,
+                Moderator = user
             };
 
             context.Cinemas.Add(cinema3);
@@ -130,7 +134,8 @@ namespace WebSite.Infrastructure
                 Movie = movie,
                 IsApproved = false,
                 Price = 50,
-                Author = user.UserName
+                Author = user.UserName,
+                Name ="Relax"
 
             };
             context.Events.Add(eventt);
@@ -140,8 +145,8 @@ namespace WebSite.Infrastructure
                 Cinema = cinema2,
                 IsApproved = true,
                 Price = 100,
-                Author = user.UserName
-
+                Author = user.UserName,
+                Name = "Be Happy"
             };
             context.Events.Add(event2);
             Event event3 = new Event()
@@ -150,8 +155,8 @@ namespace WebSite.Infrastructure
                 Cinema = cinema,
                 IsApproved = true,
                 Price = 75,
-                Author = user.UserName
-
+                Author = user.UserName,
+                Name = "Funny"
             };
             context.Events.Add(event3);
 

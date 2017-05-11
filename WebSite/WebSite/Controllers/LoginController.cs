@@ -6,7 +6,9 @@ using WebSite.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using WebSite.Infrastructure;
+
+using Domain.Concrete;
+using Domain.Entities;
 
 namespace WebSite.Controllers
 {
@@ -31,6 +33,10 @@ namespace WebSite.Controllers
                 if (user == null)
                 {
                     ModelState.AddModelError("", "Invalid name or password.");
+                }
+                else if(user.IsBanned == true)
+                {
+                    ModelState.AddModelError("", "Sorry, seems like you account has been banned.");
                 }
                 else
                 {

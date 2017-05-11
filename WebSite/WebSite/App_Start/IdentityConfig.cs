@@ -2,7 +2,8 @@
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using WebSite.Infrastructure;
+using Domain.Concrete;
+using Domain.Entities;
 
 namespace WebSite.App_Start
 {

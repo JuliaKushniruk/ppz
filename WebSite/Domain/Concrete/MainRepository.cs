@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using WebSite.Infrastructure;
-using WebSite.Models;
+using Domain.Entities;
 
-namespace WebSite.Concrete
+namespace Domain.Concrete
 {
     public class MainRepository
     {
@@ -33,21 +32,45 @@ namespace WebSite.Concrete
         {
             return context.Users.FirstOrDefault(x => x.Id == userId);
         }
-        public void UpdateEvent(Event events)
+        public void UpdateEvent(Event eventObj)
         {
-            context.Entry(events).State = EntityState.Modified;
+            context.Entry(eventObj).State = EntityState.Modified;
+            Save();
+        }
+        public void UpdateUser(AppUser user)
+        {
+            context.Entry(user).State = EntityState.Modified;
+            Save();
         }
         public void AddEvent(Event cinemaEvent)
         {
             context.Events.Add(cinemaEvent);
+            Save();
         }
         public void AddMovie(Movie movie)
         {
             context.Movies.Add(movie);
+            Save();
         }        
         public void AddCinema(Cinema cinema)
         {
             context.Cinemas.Add(cinema);
+            Save();
+        }
+        public void DeleteEvent(Event cinemaEvent)
+        {
+            context.Events.Remove(cinemaEvent);
+            Save();
+        }
+        public void DeleteMovie(Movie movie)
+        {
+            context.Movies.Remove(movie);
+            Save();
+        }
+        public void DeleteCinema(Cinema cinema)
+        {
+            context.Cinemas.Remove(cinema);
+            Save();
         }
         public void Save()
         {

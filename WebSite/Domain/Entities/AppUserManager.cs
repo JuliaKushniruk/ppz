@@ -2,10 +2,10 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using WebSite.Models;
+using Domain.Concrete;
 
 
-namespace WebSite.Infrastructure
+namespace Domain.Entities
 {
     public class AppUserManager : UserManager<AppUser>
     {
