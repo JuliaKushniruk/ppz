@@ -31,7 +31,6 @@ namespace WebSite.Controllers
             cinemaEvent.Author = repository.GetUserById(User.Identity.GetUserId()).UserName;
             cinemaEvent.Cinema = repository.GetCinemaById(model.CinemaId);
             cinemaEvent.Movie = model.Movie;
-            cinemaEvent.Price = model.Price;
             repository.AddEvent(cinemaEvent);
             return RedirectToAction("ViewEvent", "Event",new { cinemaEvent.Cinema.CinemaId });
         }

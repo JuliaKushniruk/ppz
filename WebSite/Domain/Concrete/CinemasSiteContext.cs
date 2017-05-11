@@ -7,7 +7,7 @@ namespace Domain.Concrete
 {
     public class CinemasSiteContext : IdentityDbContext<AppUser>
     {
-        public CinemasSiteContext() : base("WebbbbSite") { }
+        public CinemasSiteContext() : base("WebbbSite") { }
 
         public DbSet<Cinema> Cinemas { get; set; }
         public DbSet<Event> Events { get; set; }
@@ -154,8 +154,7 @@ namespace Domain.Concrete
             {
                 Movie = movie2,
                 Cinema = cinema,
-                IsApproved = true,
-                Price = 75,
+                IsApproved = null,
                 Author = user.UserName,
                 Name = "Funny"
             };

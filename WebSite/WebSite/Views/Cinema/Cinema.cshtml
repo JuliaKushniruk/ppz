@@ -14,7 +14,7 @@
 <body>
     <h1>@Model.CurrentCinema.Name</h1>
     <p>@Model.CurrentCinema.Description</p>
-    
+
     <p>@Model.CurrentCinema.Address</p>
 
 
@@ -28,17 +28,43 @@
     <p>Events:</p>
     @if (Model.Events != null)
     {
-        foreach(var even in Model.Events)
+        foreach (var even in Model.Events)
         {
-            <li>@Html.ActionLink(even.Name, "ViewEvent", "Event", new { eventId = even.EventId }, null)
-                </li>
+            <li>
+                @Html.ActionLink(even.Name, "ViewEvent", "Event", new { eventId = even.EventId }, null)
+        </li>
         }
     }
     else
     {
-<p> No Events yet. </p>
+        <p> No Events yet. </p>
     }
 
-   @* <p>@Html.ActionLink("View all events in this Cinema", "ViewEvent", "Event", new { cinemaId = Model.CurrentCinema.CinemaId }, null) </p>*@
+    @if (Model.IsModerator)
+    {
+
+        if (Model.Events != null)
+        {
+            <p> Events to approve: </p>
+            <ul>
+                @foreach (var even in Model.Events)
+                {
+                    if (even.IsApproved == null)
+                    {
+                        <li>
+                            @Html.ActionLink(even.Name, "ViewEvent", "Event", new { eventId = even.EventId }, null)
+                            @Html.ActionLink("Manage Event", "ManageEvent", "Event", new { eventId = even.EventId }, new { @class = "btn btn-info" })
+                        </li>
+                    }
+                }
+            </ul>
+        }
+        else
+        {
+            <p> No Events yet. </p>
+        }
+    }
+
+    @* <p>@Html.ActionLink("View all events in this Cinema", "ViewEvent", "Event", new { cinemaId = Model.CurrentCinema.CinemaId }, null) </p>*@
 </body>
 </html>

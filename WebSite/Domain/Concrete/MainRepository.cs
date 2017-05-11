@@ -4,19 +4,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Domain.Entities;
-
+using Domain.Abstract;
 
 namespace Domain.Concrete
 {
-    public class MainRepository
+    public class MainRepository: IMainRepository
     {
         private CinemasSiteContext context = new CinemasSiteContext();
-
-        //public IEnumerable<AppUser> Users { get { return context.Users; } }
-        //public IEnumerable<Movie> Movies { get { return context.Movies; } }
-        //public IEnumerable<Event> Events { get { return context.Events; } }
-        //public IEnumerable<Cinema> Cinemas { get { return context.Cinemas; } }
-        // public IEnumerable<Ticket> Tickets { get { return context.Tickets; } }
 
         public Event GetEventById(int EventId)
         {
