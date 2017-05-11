@@ -1,6 +1,6 @@
 ﻿@model WebSite.Models.SearchModel
 @{
-
+    ViewBag.Title = "Search Cinema";
 }
 
 <!DOCTYPE html>
@@ -9,26 +9,108 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Search</title>
+    <style>
+    #custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}
+    </style>
+
+    <style>
+        .container { margin-top: 20px; }
+.mb20 { margin-bottom: 20px; } 
+
+hgroup { padding-left: 15px; border-bottom: 1px solid #ccc; }
+hgroup h1 { font: 500 normal 1.625em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin-top: 0; line-height: 1.15; }
+hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin: 0; padding-bottom: 10px; }
+
+.search-result .thumbnail { border-radius: 0 !important; }
+.search-result:first-child { margin-top: 0 !important; }
+.search-result { margin-top: 20px; }
+.search-result .col-md-2 { border-right: 1px dotted #ccc; min-height: 140px; }
+.search-result ul { padding-left: 0 !important; list-style: none;  }
+.search-result ul li { font: 400 normal .85em "Roboto",Arial,Verdana,sans-serif;  line-height: 30px; }
+.search-result ul li i { padding-right: 5px; }
+.search-result .col-md-7 { position: relative; }
+.search-result h3 { font: 500 normal 1.375em "Roboto",Arial,Verdana,sans-serif; margin-top: 0 !important; margin-bottom: 10px !important; }
+.search-result p { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; } 
+.search-result span.plus { position: absolute; right: 0; top: 126px; }
+.search-result span.plus a { padding: 5px 5px 3px 5px; }
+.search-result span.border { display: block; width: 97%; margin: 0 15px; border-bottom: 1px dotted #ccc; }
+    </style>
+    <style>
+        body { 
+    padding-top: 65px;
+    padding-left: 20px;
+}
+    </style>
 </head>
 <body>
-    <div> 
-@using (Html.BeginForm())
-{
-    <div class="form-group">
-        <label class="col-lg-2 control-label" for="searchText">Cinema name:</label>
-        <div class="col-lg-10">
-            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Type cinema name here", id = "searchText" })
-        </div>
-        <input type="submit" value="GO" class="btn btn-success" />
-    </div>
-}
-        @foreach(var cinema in Model.CinemasFound)
-        {
-            <p>@Html.ActionLink(@cinema.Name, "ViewCinema", "Cinema",new { cinemaId = cinema.CinemaId} , null) </p>
-            <p>@cinema.CinemaId</p>
-            <p>@cinema.Address</p>
-        }
+       @using (Html.BeginForm())
+       {
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Search Cinema</h2>
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control input-sm", placeholder = "Cinema", id = "searchText" })
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-sm" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div> <br />
+       }
 
-    </div>
+    @foreach (var cinema in Model.CinemasFound)
+    {
+        <article class="search-result row">
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <a href="@Url.Action("ViewCinema","Cinema", new { cinemaId = cinema.CinemaId }, null)" title="Lorem ipsum pep" class="thumbnail"><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/34548-200.png" alt="Lorem ipsum" /></a> <!--http://lorempixel.com/250/140/food-->
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2">
+                <ul class="meta-search">
+                    <li><i class="glyphicon glyphicon-home"></i> <span>Address: @cinema.Address</span></li>
+                    <li><i class="glyphicon glyphicon-tags"></i> <span>Seats: @cinema.Seats</span></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-7">
+                <h3><a href="@Url.Action("ViewCinema","Cinema", new { cinemaId = cinema.CinemaId }, null)" title="">@cinema.Name</a></h3>
+                <p>@cinema.Description</p>
+            </div>
+            <span class="clearfix borda"></span>
+        </article>
+    }
+
 </body>
 </html>
