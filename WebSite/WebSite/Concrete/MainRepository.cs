@@ -16,6 +16,7 @@ namespace WebSite.Concrete
         public IEnumerable<Movie> Movies { get { return context.Movies; } }
         public IEnumerable<Event> Events { get { return context.Events; } }
         public IEnumerable<Cinema> Cinemas { get { return context.Cinemas; } }
+        public IEnumerable<Ticket> Tickets { get { return context.Tickets; } }
 
         public Event GetEventById(int EventId)
         {
@@ -56,6 +57,11 @@ namespace WebSite.Concrete
         public void AddCinema(Cinema cinema)
         {
             context.Cinemas.Add(cinema);
+            Save();
+        }
+        public void AddTicket(Ticket ticket)
+        {
+            context.Tickets.Add(ticket);
             Save();
         }
         public void DeleteEvent(Event cinemaEvent)
