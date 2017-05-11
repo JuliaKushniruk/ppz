@@ -5,6 +5,8 @@ using System.Web;
 using System.Text;
 using System.Web.Mvc;
 using WebSite.Models;
+using Domain.Concrete;
+using Domain.Entities;
 
 namespace WebSite.HtmlHelpers
 {

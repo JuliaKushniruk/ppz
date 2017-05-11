@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace WebSite.Models
+namespace Domain.Entities
 {
     public class AppUser : IdentityUser
     {  

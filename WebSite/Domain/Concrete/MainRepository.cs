@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using WebSite.Infrastructure;
-using WebSite.Models;
+using Domain.Entities;
 
-namespace WebSite.Concrete
+namespace Domain.Concrete
 {
     public class MainRepository
     {

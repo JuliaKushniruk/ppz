@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebSite.Concrete;
 using WebSite.Models;
-using WebSite.Infrastructure;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
+using Domain.Concrete;
+using Domain.Entities;
 
 namespace WebSite.Controllers
 {

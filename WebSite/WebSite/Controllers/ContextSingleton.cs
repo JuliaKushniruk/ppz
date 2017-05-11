@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebSite.Infrastructure;
+using Domain.Concrete;
+using Domain.Entities;
 
 namespace WebSite.Controllers
 {

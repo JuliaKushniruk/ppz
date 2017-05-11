@@ -6,8 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Domain.Concrete;
 
-namespace WebSite.Infrastructure
+namespace Domain.Entities
 {
     public class AppRoleManager : RoleManager<AppRole>, IDisposable
     {

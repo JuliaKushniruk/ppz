@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebSite.Infrastructure
+namespace Domain.Entities
 {
     public class AppRole : IdentityRole
     {

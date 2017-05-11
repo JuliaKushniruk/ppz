@@ -1,12 +1,13 @@
 ﻿using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
-using WebSite.Infrastructure;
 using System.Web;
 using WebSite.Models;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security;
 using System.Security.Claims;
+using Domain.Concrete;
+using Domain.Entities;
 
 namespace WebSite.Controllers
 {

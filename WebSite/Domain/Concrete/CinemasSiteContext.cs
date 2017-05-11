@@ -1,13 +1,13 @@
 ﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using WebSite.Models;
 using Microsoft.AspNet.Identity;
+using Domain.Entities;
 
-namespace WebSite.Infrastructure
+namespace Domain.Concrete
 {
     public class CinemasSiteContext : IdentityDbContext<AppUser>
     {
-        public CinemasSiteContext() : base("WebSite") { }
+        public CinemasSiteContext() : base("WebbbbSite") { }
 
         public DbSet<Cinema> Cinemas { get; set; }
         public DbSet<Event> Events { get; set; }

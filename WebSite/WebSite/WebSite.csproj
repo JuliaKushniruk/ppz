@@ -191,7 +191,6 @@
   <ItemGroup>
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Concrete\MainRepository.cs" />
     <Compile Include="Controllers\BannedUsersController.cs" />
     <Compile Include="Controllers\CinemaController.cs" />
     <Compile Include="Controllers\ContextSingleton.cs" />
@@ -209,18 +208,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
-    <Compile Include="Infrastructure\AppRole.cs" />
-    <Compile Include="Infrastructure\AppRoleManager.cs" />
-    <Compile Include="Infrastructure\CinemasSiteContext.cs" />
-    <Compile Include="Infrastructure\AppUserManager.cs" />
-    <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\CinemaPageModel.cs" />
     <Compile Include="Models\BannedUsersModel.cs" />
     <Compile Include="Models\EventLikedModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\Movie.cs" />
-    <Compile Include="Models\Cinema.cs" />
-    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\RegisterCinemaModel.cs" />
     <Compile Include="Models\RegisterEventModel.cs" />
     <Compile Include="Models\RegisterUserModel.cs" />
@@ -258,6 +249,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Infrastructure\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{a57a7d9f-0480-4578-8d70-c63643a49fec}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

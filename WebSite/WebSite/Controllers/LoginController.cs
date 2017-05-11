@@ -6,7 +6,9 @@ using WebSite.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using WebSite.Infrastructure;
+
+using Domain.Concrete;
+using Domain.Entities;
 
 namespace WebSite.Controllers
 {
