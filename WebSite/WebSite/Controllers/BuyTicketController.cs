@@ -8,13 +8,19 @@ using Domain.Concrete;
 using WebSite.Models;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
+using Domain.Abstract;
 
 namespace WebSite.Controllers
 {
     [Authorize]
     public class BuyTicketController : Controller
     {
-        private MainRepository repository = new MainRepository();
+        private readonly IMainRepository repository;
+
+        public BuyTicketController(IMainRepository repo)
+        {
+            repository = repo;
+        }
 
         public ActionResult BuyTicket(int eventId = 0)
         {

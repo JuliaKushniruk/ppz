@@ -6,15 +6,21 @@ using System.Web.Mvc;
 using WebSite.Models;
 using Domain.Concrete;
 using Domain.Entities;
+using Domain.Abstract;
 
 namespace WebSite.Controllers
 {
     public class SearchCinemaController : Controller
     {
-        private MainRepository repository = new MainRepository();
+        private readonly IMainRepository repository;
+
+        public SearchCinemaController(IMainRepository repo)
+        {
+            repository = repo;
+        }
 
         [HttpGet]
-        public ActionResult Index()
+        public ViewResult Index()
         {
             SearchModel model = new SearchModel();
             model.CinemasFound = from cinema in repository.GetCinemas()
@@ -23,7 +29,7 @@ namespace WebSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(SearchModel model)
+        public ViewResult Index(SearchModel model)
         {
             model.CinemasFound = from cinema in repository.GetCinemas()
                                  where cinema.Name == model.Name

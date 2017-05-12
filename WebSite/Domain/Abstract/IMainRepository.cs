@@ -8,7 +8,7 @@ using Domain.Entities;
 
 namespace Domain.Abstract
 {
-    public interface IMainRepository
+    public interface IMainRepository : IDisposable
     {
         Event GetEventById(int EventId);
         IEnumerable<Event> GetEvents();

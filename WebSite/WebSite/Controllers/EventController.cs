@@ -7,12 +7,18 @@ using System.Web.Mvc;
 using WebSite.Models;
 using Domain.Concrete;
 using Domain.Entities;
+using Domain.Abstract;
 
 namespace WebSite.Controllers
 {
     public class EventController : Controller
     {
-        private MainRepository repository = new MainRepository();
+        private readonly IMainRepository repository;
+
+        public EventController(IMainRepository repo)
+        {
+            repository = repo;
+        }
 
         [AllowAnonymous]
         public ViewResult ViewEvent(int EventID = 0)

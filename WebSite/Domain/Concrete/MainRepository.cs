@@ -10,8 +10,31 @@ namespace Domain.Concrete
 {
     public class MainRepository: IMainRepository
     {
-        private CinemasSiteContext context = new CinemasSiteContext();
+        private CinemasSiteContext context;
+        private bool disposed = false;
 
+        public MainRepository(CinemasSiteContext context)
+        {
+            this.context = context;
+        }
+
+        public void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    context.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
         public Event GetEventById(int EventId)
         {
             return context.Events.Find(EventId);
@@ -98,5 +121,7 @@ namespace Domain.Concrete
         {
             context.SaveChanges();
         }
+
+        
     }
 }

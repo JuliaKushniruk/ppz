@@ -6,12 +6,18 @@ using System.Web.Mvc;
 using WebSite.Models;
 using Domain.Concrete;
 using Domain.Entities;
+using Domain.Abstract;
 
 namespace WebSite.Controllers
 {
     public class MovieController : Controller
     {
-        private MainRepository repository = new MainRepository();
+        private readonly IMainRepository repository;
+
+        public MovieController(IMainRepository repo)
+        {
+            repository = repo;
+        }
 
         public ActionResult ViewMovie(int movieId = 1)
         {
