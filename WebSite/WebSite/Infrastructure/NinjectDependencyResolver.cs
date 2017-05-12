@@ -28,6 +28,8 @@ namespace WebSite.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IMainRepository>().To<MainRepository>();
+
+
         }
     }
 }

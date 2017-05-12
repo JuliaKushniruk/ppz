@@ -63,7 +63,7 @@ namespace WebSite.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+            DependencyResolver.SetResolver(new Infrastructure.NinjectDependencyResolver(kernel));
         }        
     }
 }

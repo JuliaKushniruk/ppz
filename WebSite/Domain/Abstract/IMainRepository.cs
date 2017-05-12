@@ -8,7 +8,7 @@ using Domain.Entities;
 
 namespace Domain.Abstract
 {
-    public interface IMainRepository
+    public interface IMainRepository : IDisposable
     {
         Event GetEventById(int EventId);
         IEnumerable<Event> GetEvents();
@@ -27,6 +27,7 @@ namespace Domain.Abstract
         void DeleteEvent(Event cinemaEvent);
         void DeleteMovie(Movie movie);
         void DeleteCinema(Cinema cinema);
+        IEnumerable<Ticket> GetTicketsByUserId(string userId);
         void Save();
     }
 }

@@ -8,10 +8,33 @@ using Domain.Abstract;
 
 namespace Domain.Concrete
 {
-    public class MainRepository: IMainRepository
+    public class MainRepository : IMainRepository
     {
-        private CinemasSiteContext context = new CinemasSiteContext();
+        private CinemasSiteContext context;
+        private bool disposed = false;
 
+        public MainRepository(CinemasSiteContext context)
+        {
+            this.context = context;
+        }
+
+        public void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    context.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
         public Event GetEventById(int EventId)
         {
             return context.Events.Find(EventId);
@@ -48,13 +71,7 @@ namespace Domain.Concrete
             var users = from user in context.Users select user;
             return users.ToList();
         }
-        public IEnumerable<Ticket> GetTicketsByUserId(string userId)
-        {
-            var tickets = from ticket in context.Tickets
-                          where ticket.Owner.Id == userId
-                          select ticket;
-            return tickets.ToList();
-        }
+
         public void UpdateEvent(Event eventObj)
         {
             context.Entry(eventObj).State = EntityState.Modified;
@@ -74,7 +91,7 @@ namespace Domain.Concrete
         {
             context.Movies.Add(movie);
             Save();
-        }        
+        }
         public void AddCinema(Cinema cinema)
         {
             context.Cinemas.Add(cinema);
@@ -100,9 +117,20 @@ namespace Domain.Concrete
             context.Cinemas.Remove(cinema);
             Save();
         }
+
+        public IEnumerable<Ticket> GetTicketsByUserId(string userId)
+        {
+            var tickets = from ticket in context.Tickets
+                          where ticket.Owner.Id == userId
+                          select ticket;
+            return tickets.ToList();
+        }
+
         public void Save()
         {
             context.SaveChanges();
         }
+
+
     }
 }

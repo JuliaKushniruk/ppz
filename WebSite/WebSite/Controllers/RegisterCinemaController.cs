@@ -15,7 +15,7 @@ namespace WebSite.Controllers
     [Authorize]
     public class RegisterCinemaController : Controller
     {
-        private IMainRepository repository;
+        private readonly IMainRepository repository;
 
         public RegisterCinemaController(IMainRepository repo)
         {
