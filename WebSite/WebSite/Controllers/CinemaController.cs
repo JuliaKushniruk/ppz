@@ -7,12 +7,18 @@ using WebSite.Models;
 using Microsoft.AspNet.Identity;
 using Domain.Concrete;
 using Domain.Entities;
+using Domain.Abstract;
 
 namespace WebSite.Controllers
 {
     public class CinemaController : Controller
     {
-        private MainRepository repository = new MainRepository();
+        private readonly IMainRepository repository;
+
+        public CinemaController(IMainRepository repo)
+        {
+            repository = repo;
+        }
 
         public ActionResult ViewCinema(int cinemaId = 0)
         {
@@ -23,7 +29,9 @@ namespace WebSite.Controllers
             model.Events = (from even in repository.GetEvents()
                             where even.Cinema == model.CurrentCinema
                             select even);
+
             model.IsModerator = User.Identity.GetUserId() == model.CurrentCinema.Moderator.Id;
+
             return View("Cinema", model);
         }
 

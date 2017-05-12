@@ -8,13 +8,19 @@ using Microsoft.AspNet.Identity;
 using Domain.Concrete;
 using Domain.Entities;
 using WebSite.Models;
+using Domain.Abstract;
 
 namespace WebSite.Controllers
 {
     [Authorize]
     public class TicketsController : Controller
     {
-        private MainRepository repository = new MainRepository();
+        private IMainRepository repository ;
+
+        public TicketsController(IMainRepository repo)
+        {
+            repository = repo;
+        }
 
         public ActionResult ViewTickets()
         {

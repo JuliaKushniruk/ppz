@@ -7,13 +7,20 @@ using System.Web.Mvc;
 using WebSite.Models;
 using Domain.Concrete;
 using Domain.Entities;
+using Domain.Abstract;
+
 
 namespace WebSite.Controllers
 {
     [Authorize]
     public class RegisterEventController : Controller
     {
-        private MainRepository repository = new MainRepository();
+        private readonly IMainRepository repository;
+
+        public RegisterEventController(IMainRepository repo)
+        {
+            repository = repo;
+        }
 
         [HttpGet]
         public ViewResult Register(int cinemaId = 0)

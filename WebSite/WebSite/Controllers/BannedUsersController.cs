@@ -9,13 +9,19 @@ using WebSite.Models;
 using Domain.Concrete;
 using Domain.Entities;
 using System.Threading.Tasks;
+using Domain.Abstract;
 
 namespace WebSite.Controllers
 {
     [Authorize(Roles = "Administrator")]
     public class BannedUsersController : Controller
     {
-        private MainRepository repository = new MainRepository();
+        private readonly IMainRepository repository;
+
+        public BannedUsersController(IMainRepository repo)
+        {
+            repository = repo;
+        }
 
         public ActionResult ViewBannedUsers()
         {

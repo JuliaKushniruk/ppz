@@ -17,6 +17,6 @@ namespace Domain.Entities
 
         public virtual AppUser Moderator { get; set; }
 
-        //public int AAA { get; set; }
+       // public int AAA { get; set; }
     }
 }

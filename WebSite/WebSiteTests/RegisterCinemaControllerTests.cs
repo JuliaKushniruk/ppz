@@ -11,7 +11,7 @@ using System.Security.Principal;
 namespace WebSiteTests
 {
     [TestClass]
-    public class RegisterCinemaControllerTest
+    public class RegisterCinemaControllerTests
     {
         [TestMethod]
         public void RegisterCinemaGetTest()

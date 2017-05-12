@@ -6,12 +6,18 @@ using System.Web.Mvc;
 using WebSite.Models;
 using Domain.Concrete;
 using Domain.Entities;
+using Domain.Abstract;
 
 namespace WebSite.Controllers
 {
     public class SearchEventsController : Controller
     {
-        private MainRepository repository = new MainRepository();
+        private IMainRepository repository;
+
+        public SearchEventsController(IMainRepository repo)
+        {
+            repository = repo;
+        }
 
         [HttpGet]
         public ActionResult SearchEvents()
