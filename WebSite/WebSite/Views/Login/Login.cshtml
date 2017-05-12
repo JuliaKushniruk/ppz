@@ -1,23 +1,55 @@
 ﻿@model WebSite.Models.LoginModel
 @{ ViewBag.Title = "Login";}
-<h2>Log In</h2>
-@Html.ValidationSummary()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken();
-    <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
-    <div class="form-group">
-        <label>Name</label>
-        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Password</label>
-        @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
-    </div>
-    <button class="btn btn-primary" type="submit">Log In</button>
+    <div class="container">
 
-    <p>Don't have account yet?</p>
-    @Html.ActionLink("Register", "Index", "RegisterUser", null, new { @class = "btn btn-default" })
+    <form class="well form-horizontal" action=" " method="post" id="contact_form">
+        @Html.AntiForgeryToken();
+        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+        <fieldset>
 
-}
+            <legend><center><h2><b>Login Form</b></h2></center></legend><br>
+
+            <div class="form-group required">
+                <label class="col-md-4 control-label">Username</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Username" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group required">
+                <label class="col-md-4 control-label">Password</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        @Html.PasswordFor(x => x.Password, new { @class = "form-control", placeholder = "Password" })
+                    </div>
+                </div>
+            </div>
+
+
+            @if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+            {
+                <div class="alert alert-danger">
+                    <h4>Validation Errors</h4>
+                    @Html.ValidationSummary()
+                </div>
+            }
+
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <br>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+
+
