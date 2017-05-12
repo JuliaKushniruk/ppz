@@ -15,12 +15,16 @@
     <div>
        
        
-            <p> <b>Кінотеатр:</b>  @Model.Cinema </p>
-            <p> <b>Фільм:</b>@Model.Film </p>
-            @if (Model.IsApproved)
+            <p> <b>Кінотеатр:</b> @Html.ActionLink(@Model.Cinema, "ViewCinema", "Cinema", new { cinemaId = Model.CinemaID }, new { @class = "btn btn-default" })  </p>
+            <p> <b>Фільм:</b> @Html.ActionLink(@Model.Film, "ViewMovie", "Movie", new { movieId = Model.MovieId }, new { @class = "btn btn-default" })  </p>
+            @if (Model.IsApproved == true)
             { <p> <b>Статус:</b> Затверджено </p>}
-            else
+            else if (Model.IsApproved == null)
             { <p> <b>Статус:</b> Розглядається </p>}
+            else
+            {
+                { <p> <b>Статус:</b> Не Затверджено </p>}
+            }
             <p> <b>Користувач, що запропонував:</b> @Model.Author</p>
             <p> <b>Ціна:</b> @Model.Price грн</p>
 
@@ -34,7 +38,7 @@
             }
             <p> Кількість лайків: @Model.LikesAmount</p>
 
-        
+        @Html.ActionLink("Buy ticket", "BuyTicket", "BuyTicket", Model, new { @class = "btn btn-success" })
     </div>
 </body>
 </html>

@@ -1,0 +1,32 @@
+﻿@model WebSite.Models.EventLikedModel
+{
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <p> <b>Кінотеатр:</b>  @Model.Cinema </p>
+        <p> <b>Фільм:</b>@Model.Film </p>
+        @if (Model.IsApproved == true)
+        { <p> <b>Статус:</b> Затверджено </p>}
+        else if ((Model.IsApproved == null))
+        { <p> <b>Статус:</b> Розглядається </p>}
+        else
+        { <p> <b>Статус:</b> Не Затверджено </p>}
+        <p> <b>Користувач, що запропонував:</b> @Model.Author</p>
+
+        <p>Set Price : @Html.TextBoxFor(x => x.Price) </p>
+
+        @Html.ActionLink("Approve", "ApproveEvent", "Event",Model , new { @class = "btn btn-success" })
+        @Html.ActionLink("Decline", "DisApproveEvent", "Event", Model, new { @class = "btn btn-danger" })
+    </div>
+</body>
+</html>

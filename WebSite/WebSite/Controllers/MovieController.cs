@@ -15,9 +15,8 @@ namespace WebSite.Controllers
 
         public ActionResult ViewMovie(int movieId = 1)
         {
-            var movies = repository.GetMovies();
-
-            return View("Movie", movies);
+            Movie movie = repository.GetMovieById(movieId);
+            return View("Movie", movie);
         }
     }
 }

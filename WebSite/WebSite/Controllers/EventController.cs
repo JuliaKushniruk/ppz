@@ -17,7 +17,7 @@ namespace WebSite.Controllers
         [AllowAnonymous]
         public ViewResult ViewEvent(int EventID = 0)
         {
-            Event even = (from eventss in repository.GetEvents() where eventss.EventId == EventID select eventss).FirstOrDefault();
+            Event even = repository.GetEventById(EventID);
 
             EventLikedModel eventsToDisplay;
 
@@ -26,12 +26,13 @@ namespace WebSite.Controllers
                 {
                     EventId = even.EventId,
                     Cinema = even.Cinema.Name,
+                    CinemaID = even.Cinema.CinemaId,
                     Film = even.Movie.Name,
                     IsApproved = even.IsApproved,
-                    Price = even.Price,
                     Author = even.Author,
                     IsLiked = even.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId()) != null,
-                    LikesAmount = even.Users.Count
+                    LikesAmount = even.Users.Count,
+                    MovieId = even.Movie.MovieId
                 };
 
             return View("Event", eventsToDisplay);
@@ -58,6 +59,42 @@ namespace WebSite.Controllers
             repository.UpdateEvent(result);
             eventModel.LikesAmount--;
             return RedirectToAction("ViewEvent", new { result.EventId });
+        }
+        
+        public ActionResult ManageEvent(int EventID = 0)
+        {
+            Event even = (from eventss in repository.GetEvents() where eventss.EventId == EventID select eventss).FirstOrDefault();
+            EventLikedModel eventsToDisplay;
+
+            eventsToDisplay =
+                new EventLikedModel
+                {
+                    EventId = even.EventId,
+                    Cinema = even.Cinema.Name,
+                    CinemaID = even.Cinema.CinemaId,
+                    Film = even.Movie.Name,
+                    IsApproved = even.IsApproved,
+                    Author = even.Author,
+                    IsLiked = even.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId()) != null,
+                    LikesAmount = even.Users.Count
+                };            
+            return View("ApproveEvent",eventsToDisplay);
+        }
+       
+        public ActionResult ApproveEvent(EventLikedModel eventModel)
+        {
+            var result = repository.GetEventById(eventModel.EventId);
+            result.IsApproved = true;
+            result.Price = eventModel.Price;
+            repository.UpdateEvent(result);
+            return RedirectToAction("ViewCinema" , "Cinema",new { result.Cinema.CinemaId});
+        }
+        public ActionResult DisApproveEvent(EventLikedModel eventModel)
+        {
+            var result = repository.GetEventById(eventModel.EventId);
+            result.IsApproved = false;
+            result.Price = eventModel.Price;
+            return RedirectToAction("ViewCinema", "Cinema", new { result.Cinema.CinemaId });
         }
     }
 }

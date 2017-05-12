@@ -10,5 +10,6 @@ namespace WebSite.Models
     {
         public IEnumerable<Event> Events { get; set; }
         public Cinema CurrentCinema { get; set; }
+        public bool IsModerator { get; set; }
     }
 }

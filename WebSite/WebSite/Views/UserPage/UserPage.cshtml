@@ -26,7 +26,7 @@
         @Html.ActionLink("Edit", "Edit", "EditUser", new { userId = Model.User.Id }, new { @class = "btn btn-default" })
 
         <p>Moderated cinemas:</p>
-            if (Model.ModeratedCinemas != null)
+            if (@Model.ModeratedCinemas.Count() == 0)
             {
                 <ul>
                     @foreach (var cinema in @Model.ModeratedCinemas)

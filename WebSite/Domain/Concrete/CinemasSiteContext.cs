@@ -7,11 +7,12 @@ namespace Domain.Concrete
 {
     public class CinemasSiteContext : IdentityDbContext<AppUser>
     {
-        public CinemasSiteContext() : base("WebbbbSite") { }
+        public CinemasSiteContext() : base("WebbbSite") { }
 
         public DbSet<Cinema> Cinemas { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
 
         static CinemasSiteContext()
         {
@@ -50,7 +51,7 @@ namespace Domain.Concrete
                     UserName = userName, Email = email, PhoneNumber = phoneNumber, IsBanned = isbanned }, pass);
                 user = userManager.FindByName(userName);
             }
-
+            
             Movie movie = new Movie()
             {
                 Name = "Midnight in Paris",
@@ -153,12 +154,28 @@ namespace Domain.Concrete
             {
                 Movie = movie2,
                 Cinema = cinema,
-                IsApproved = true,
-                Price = 75,
+                IsApproved = null,
                 Author = user.UserName,
                 Name = "Funny"
             };
             context.Events.Add(event3);
+
+            Ticket ticket1 = new Ticket()
+            {
+                Event = event2,
+                Owner = user,
+                Row = 3,
+                Seat = 12
+            };
+            context.Tickets.Add(ticket1);
+            Ticket ticket2 = new Ticket()
+            {
+                Event = event3,
+                Owner = user,
+                Row = 6,
+                Seat = 13
+            };
+            context.Tickets.Add(ticket2);
 
             string registeredUser = "RegisteredUser";
             string cinemaModerator = "CinemaModerator";
@@ -178,7 +195,7 @@ namespace Domain.Concrete
             {
                 roleManager.Create(new AppRole(administrator));
             }
-            
+
             base.Seed(context);
         }
 

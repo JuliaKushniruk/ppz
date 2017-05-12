@@ -15,8 +15,9 @@ namespace Domain.Entities
         public virtual Cinema Cinema { get; set; }
         public virtual Movie Movie { get; set; }
         public string Author { get; set; }
-        public bool IsApproved { get; set; }
-        public double Price { get; set; }
+        public bool? IsApproved { get; set; }
+        public double? Price { get; set; }
+        public DateTime? ApproveDate { get; set; }
 
         public virtual ICollection<AppUser> Users { get; set; }
 

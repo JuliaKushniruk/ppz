@@ -8,14 +8,19 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using Domain.Concrete;
 using Domain.Entities;
+using Domain.Abstract;
 
 namespace WebSite.Controllers
 {
     [Authorize]
     public class RegisterCinemaController : Controller
     {
-        private MainRepository repository = new MainRepository();
+        private IMainRepository repository;
 
+        public RegisterCinemaController(IMainRepository repo)
+        {
+            repository = repo;
+        }
         [HttpGet]
         public ViewResult Register()
         {
@@ -28,9 +33,9 @@ namespace WebSite.Controllers
         [HttpPost]
         public ActionResult Register(RegisterCinemaModel model)
         {
-            //AppUser user = repository.GetUserById(User.Identity.GetUserId());
-            //if (user != null)
-                model.Cinema.Moderator = model.CurrentUser;
+            AppUser user = repository.GetUserById(User.Identity.GetUserId());
+            if (user != null)
+                model.Cinema.Moderator =user;
             repository.AddCinema(model.Cinema);
             UserManager.AddToRoleAsync(User.Identity.GetUserId(), "CinemaModerator");
             return RedirectToAction("ViewUser", "UserPage", new { userId = User.Identity.GetUserId() });

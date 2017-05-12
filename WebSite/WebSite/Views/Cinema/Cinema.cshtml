@@ -19,7 +19,6 @@
 </head>
 <body>
 
-
     <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
         <div class="row panel">
             <div class="col-md-4 bg_blur ">
@@ -38,7 +37,7 @@
                 </div>
             </div>
             
-            @if (User.IsInRole("Administrator") || )
+            @if (User.IsInRole("Administrator") || Model.IsModerator)
             {
                 <div class="col-md-1">
                     @Html.ActionLink("Delete cinema", "Register", "RegisterEvent", new { cinemaId = Model.CurrentCinema.CinemaId }, new { @class = "btn btn-danger" })
@@ -80,7 +79,5 @@
     }
     <br />
     
-
-
 </body>
 </html>

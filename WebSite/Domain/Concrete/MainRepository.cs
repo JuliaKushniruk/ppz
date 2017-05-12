@@ -4,17 +4,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Domain.Entities;
+using Domain.Abstract;
 
 namespace Domain.Concrete
 {
-    public class MainRepository
+    public class MainRepository: IMainRepository
     {
         private CinemasSiteContext context = new CinemasSiteContext();
-
-        //public IEnumerable<AppUser> Users { get { return context.Users; } }
-        //public IEnumerable<Movie> Movies { get { return context.Movies; } }
-        //public IEnumerable<Event> Events { get { return context.Events; } }
-        //public IEnumerable<Cinema> Cinemas { get { return context.Cinemas; } }
 
         public Event GetEventById(int EventId)
         {
@@ -52,7 +48,13 @@ namespace Domain.Concrete
             var users = from user in context.Users select user;
             return users.ToList();
         }
-
+        public IEnumerable<Ticket> GetTicketsByUserId(string userId)
+        {
+            var tickets = from ticket in context.Tickets
+                          where ticket.Owner.Id == userId
+                          select ticket;
+            return tickets.ToList();
+        }
         public void UpdateEvent(Event eventObj)
         {
             context.Entry(eventObj).State = EntityState.Modified;
@@ -76,6 +78,11 @@ namespace Domain.Concrete
         public void AddCinema(Cinema cinema)
         {
             context.Cinemas.Add(cinema);
+            Save();
+        }
+        public void AddTicket(Ticket ticket)
+        {
+            context.Tickets.Add(ticket);
             Save();
         }
         public void DeleteEvent(Event cinemaEvent)
