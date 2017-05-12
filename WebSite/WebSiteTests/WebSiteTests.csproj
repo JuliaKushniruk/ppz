@@ -160,6 +160,8 @@
     <Compile Include="SearchCinemaControllerTests.cs" />
     <Compile Include="SearchEventsControllerTests.cs" />
     <Compile Include="BannedUsersControllerTests.cs" />
+    <Compile Include="RegisterEventControllerTests.cs" />
+    <Compile Include="TicketsControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

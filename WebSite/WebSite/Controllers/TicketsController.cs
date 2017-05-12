@@ -22,7 +22,7 @@ namespace WebSite.Controllers
             repository = repo;
         }
 
-        public ActionResult ViewTickets()
+        public ViewResult ViewTickets()
         {
             ViewTicketsModel model = new ViewTicketsModel
             {
