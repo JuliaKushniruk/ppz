@@ -27,6 +27,11 @@
                             <span class="glyphicon glyphicon-search"></span>  Search cinemas
                         </a>
                     </li>
+                    <li>
+                        <a href='@Url.Action("SearchEvents", "SearchEvents")'>
+                            <span class="glyphicon glyphicon-search"></span>  Search events
+                        </a>
+                    </li>
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>
