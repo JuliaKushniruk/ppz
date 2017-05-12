@@ -20,7 +20,7 @@ namespace WebSite.Controllers
         }
 
         [HttpGet]
-        public ActionResult SearchEvents()
+        public ViewResult SearchEvents()
         {
             SearchEventModel model = new SearchEventModel();
             model.EventsFound = from ev in repository.GetEvents()
@@ -29,7 +29,7 @@ namespace WebSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult SearchEvents(SearchEventModel model)
+        public ViewResult SearchEvents(SearchEventModel model)
         {
             model.EventsFound = from ev in repository.GetEvents()
                                 where ev.Name.ToLower().Contains(model.Name.ToLower())
