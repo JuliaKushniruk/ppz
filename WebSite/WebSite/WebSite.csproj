@@ -230,12 +230,14 @@
     <Compile Include="Controllers\RegisterEventController.cs" />
     <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Controllers\SearchCinemaController.cs" />
+    <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\UserPageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ICinemaService.cs" />
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
+    <Compile Include="Models\BuyTicketModel.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\CinemaPageModel.cs" />
     <Compile Include="Models\BannedUsersModel.cs" />
@@ -246,6 +248,7 @@
     <Compile Include="Models\RegisterUserModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\UserPageModel.cs" />
+    <Compile Include="Models\ViewTicketsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -271,6 +274,7 @@
     <Content Include="Views\BannedUsers\BannedUsers.cshtml" />
     <Content Include="Views\Event\ApproveEvent.cshtml" />
     <Content Include="Views\BuyTicket\BuyTicket.cshtml" />
+    <Content Include="Views\Tickets\ViewTickets.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

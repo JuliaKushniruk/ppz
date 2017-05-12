@@ -23,7 +23,7 @@ namespace WebSite.Controllers
         [AllowAnonymous]
         public ViewResult ViewEvent(int EventID = 0)
         {
-            Event even = (from eventss in repository.GetEvents() where eventss.EventId == EventID select eventss).FirstOrDefault();
+            Event even = repository.GetEventById(EventID);
 
             EventLikedModel eventsToDisplay;
 
@@ -32,12 +32,13 @@ namespace WebSite.Controllers
                 {
                     EventId = even.EventId,
                     Cinema = even.Cinema.Name,
-                    CinemaID=even.Cinema.CinemaId,
+                    CinemaID = even.Cinema.CinemaId,
                     Film = even.Movie.Name,
                     IsApproved = even.IsApproved,
                     Author = even.Author,
                     IsLiked = even.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId()) != null,
-                    LikesAmount = even.Users.Count
+                    LikesAmount = even.Users.Count,
+                    MovieId = even.Movie.MovieId
                 };
 
             return View("Event", eventsToDisplay);

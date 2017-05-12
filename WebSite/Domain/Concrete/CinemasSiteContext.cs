@@ -51,7 +51,7 @@ namespace Domain.Concrete
                     UserName = userName, Email = email, PhoneNumber = phoneNumber, IsBanned = isbanned }, pass);
                 user = userManager.FindByName(userName);
             }
-
+            
             Movie movie = new Movie()
             {
                 Name = "Midnight in Paris",
@@ -195,7 +195,6 @@ namespace Domain.Concrete
             {
                 roleManager.Create(new AppRole(administrator));
             }
-
 
             base.Seed(context);
         }

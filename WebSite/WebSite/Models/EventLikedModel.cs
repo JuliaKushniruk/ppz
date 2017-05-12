@@ -18,5 +18,7 @@ namespace WebSite.Models
         public string Author { get; set; }
         public bool IsLiked { get; set; }
         public int LikesAmount { get; set; }
+
+        public int MovieId { get; set; }
     }
 }

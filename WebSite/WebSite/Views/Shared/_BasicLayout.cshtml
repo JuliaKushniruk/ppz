@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <style>
-        body { padding-top: 65px; }
+        body { padding-top: 65px; 
+        }
     </style>
     <title>@ViewBag.Title</title>
 </head>
@@ -27,6 +28,14 @@
                             <span class="glyphicon glyphicon-search"></span>  Search cinemas
                         </a>
                     </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a href='@Url.Action("ViewTickets","Tickets")'>
+                                <span class="glyphicon glyphicon-tag"></span>  My tickets
+                            </a>
+                        </li>
+                    }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (User.Identity.IsAuthenticated)

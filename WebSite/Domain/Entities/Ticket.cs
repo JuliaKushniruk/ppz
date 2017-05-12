@@ -10,8 +10,8 @@ namespace Domain.Entities
     {
         [Key]
         public int TicketId { get; set; }
-        public Event Event { get; set; }
-        public AppUser Owner { get; set; }
+        public virtual Event Event { get; set; }
+        public virtual AppUser Owner { get; set; }
         public int Row { get; set; }
         public int Seat { get; set; }
     }

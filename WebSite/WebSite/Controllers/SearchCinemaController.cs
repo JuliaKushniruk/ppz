@@ -32,7 +32,7 @@ namespace WebSite.Controllers
         public ViewResult Index(SearchModel model)
         {
             model.CinemasFound = from cinema in repository.GetCinemas()
-                                 where cinema.Name == model.Name
+                                 where cinema.Name.ToLower().Contains(model.Name.ToLower())
                                  select cinema;
             return View("Search", model);
         }

@@ -8,7 +8,7 @@ using Domain.Abstract;
 
 namespace Domain.Concrete
 {
-    public class MainRepository: IMainRepository
+    public class MainRepository : IMainRepository
     {
         private CinemasSiteContext context;
         private bool disposed = false;
@@ -91,7 +91,7 @@ namespace Domain.Concrete
         {
             context.Movies.Add(movie);
             Save();
-        }        
+        }
         public void AddCinema(Cinema cinema)
         {
             context.Cinemas.Add(cinema);
@@ -117,11 +117,20 @@ namespace Domain.Concrete
             context.Cinemas.Remove(cinema);
             Save();
         }
+
+        public IEnumerable<Ticket> GetTicketsByUserId(string userId)
+        {
+            var tickets = from ticket in context.Tickets
+                          where ticket.Owner.Id == userId
+                          select ticket;
+            return tickets.ToList();
+        }
+
         public void Save()
         {
             context.SaveChanges();
         }
 
-        
+
     }
 }

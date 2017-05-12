@@ -10,61 +10,74 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Cinema</title>
+    <style>
+                body { 
+    padding-left: 20px;
+    padding-right: 20px;
+}
+    </style>
 </head>
 <body>
-    <h1>@Model.CurrentCinema.Name</h1>
-    <p>@Model.CurrentCinema.Description</p>
 
-    <p>@Model.CurrentCinema.Address</p>
+    <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+        <div class="row panel">
+            <div class="col-md-4 bg_blur ">
+                <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/34548-200.png" alt="@Model.CurrentCinema.Name" />
+            </div>
+            <div class="col-md-7  col-xs-12">
+                <div class="header">
+                    <h1>@Model.CurrentCinema.Name</h1>
+                    <h4>@Model.CurrentCinema.Address</h4>
+                    <p>
+                        @Model.CurrentCinema.Description
+                    </p>
+                    <p>
+                        Abailable seats: @Model.CurrentCinema.Seats
+                    </p>
+                </div>
+            </div>
+            
+            @if (User.IsInRole("Administrator") || Model.IsModerator)
+            {
+                <div class="col-md-1">
+                    @Html.ActionLink("Delete cinema", "Register", "RegisterEvent", new { cinemaId = Model.CurrentCinema.CinemaId }, new { @class = "btn btn-danger" })
+                </div>
+            }
+        </div>
+    </div>
 
+   
+    <legend><h3><i class="glyphicon glyphicon-bullhorn"></i><b>  Our Events:</b></h3></legend>
 
-    @if (true)
+    <div class="row">
+        <div class="col-md-5">
+            @if (Model.Events != null)
+            {
+                <ul class="list-group">
+                    @foreach (var even in Model.Events)
+                {
+                        <li class="list-group-item">
+                            @Html.ActionLink(even.Name, "ViewEvent", "Event", new { eventId = even.EventId }, null)
+                        </li>
+                    }
+                </ul>
+
+            }
+            else
+            {
+                <h3><b> No Events yet. </b></h3>
+            }
+            <div>
+                @Html.ActionLink("Register Event", "Register", "RegisterEvent", new { cinemaId = Model.CurrentCinema.CinemaId }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+
+    @if (User.IsInRole("Administrator"))
     {
         @Html.ActionLink("Delete cinema", "DeleteCinema", "UserPage", new { cinemaId = Model.CurrentCinema.CinemaId }, new { @class = "btn btn-default" })
     }
-
-    <p>@Html.ActionLink("Register Event", "Register", "RegisterEvent", new { cinemaId = Model.CurrentCinema.CinemaId }, null) </p>
-
-    <p>Events:</p>
-    @if (Model.Events != null)
-    {
-        foreach (var even in Model.Events)
-        {
-            <li>
-                @Html.ActionLink(even.Name, "ViewEvent", "Event", new { eventId = even.EventId }, null)
-        </li>
-        }
-    }
-    else
-    {
-        <p> No Events yet. </p>
-    }
-
-    @if (Model.IsModerator)
-    {
-
-        if (Model.Events != null)
-        {
-            <p> Events to approve: </p>
-            <ul>
-                @foreach (var even in Model.Events)
-                {
-                    if (even.IsApproved == null)
-                    {
-                        <li>
-                            @Html.ActionLink(even.Name, "ViewEvent", "Event", new { eventId = even.EventId }, null)
-                            @Html.ActionLink("Manage Event", "ManageEvent", "Event", new { eventId = even.EventId }, new { @class = "btn btn-info" })
-                        </li>
-                    }
-                }
-            </ul>
-        }
-        else
-        {
-            <p> No Events yet. </p>
-        }
-    }
-
-    @* <p>@Html.ActionLink("View all events in this Cinema", "ViewEvent", "Event", new { cinemaId = Model.CurrentCinema.CinemaId }, null) </p>*@
+    <br />
+    
 </body>
 </html>

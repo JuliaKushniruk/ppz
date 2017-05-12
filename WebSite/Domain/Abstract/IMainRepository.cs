@@ -27,6 +27,7 @@ namespace Domain.Abstract
         void DeleteEvent(Event cinemaEvent);
         void DeleteMovie(Movie movie);
         void DeleteCinema(Cinema cinema);
+        IEnumerable<Ticket> GetTicketsByUserId(string userId);
         void Save();
     }
 }
