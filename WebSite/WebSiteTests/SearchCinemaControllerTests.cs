@@ -16,7 +16,7 @@ namespace WebSiteTests
     public class SearchCinemaControllerTests
     {
         [TestMethod]
-        public void IndexTestGet()
+        public void SearchCinemaIndexGetTest()
         {
             Mock<ControllerContext> controllerContext = new Mock<ControllerContext>();
             Mock<IPrincipal> principal = new Mock<IPrincipal>();
@@ -47,7 +47,7 @@ namespace WebSiteTests
         }
 
         [TestMethod]
-        public void IndexTestPost()
+        public void SearchCinemaIndexPostTest()
         {
             Mock<ControllerContext> controllerContext = new Mock<ControllerContext>();
             Mock<IPrincipal> principal = new Mock<IPrincipal>();

@@ -177,16 +177,11 @@ namespace Domain.Concrete
             };
             context.Tickets.Add(ticket2);
 
-            string registeredUser = "RegisteredUser";
             string cinemaModerator = "CinemaModerator";
             string administrator = "Administrator";
 
             AppRoleManager roleManager = new AppRoleManager(new RoleStore<AppRole>(context));
 
-            if (!roleManager.RoleExists(registeredUser))
-            {
-                roleManager.Create(new AppRole(registeredUser));
-            }
             if (!roleManager.RoleExists(cinemaModerator))
             {
                 roleManager.Create(new AppRole(cinemaModerator));
@@ -196,6 +191,8 @@ namespace Domain.Concrete
                 roleManager.Create(new AppRole(administrator));
             }
 
+            IdentityResult res = userManager.AddToRole(user.Id, administrator);
+            bool a = res.Succeeded;
             base.Seed(context);
         }
 

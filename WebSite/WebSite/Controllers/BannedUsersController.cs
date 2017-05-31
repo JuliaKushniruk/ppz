@@ -23,19 +23,19 @@ namespace WebSite.Controllers
             repository = repo;
         }
 
-        public ActionResult ViewBannedUsers()
+        public ViewResult ViewBannedUsers()
         {
             BannedUsersModel model = new BannedUsersModel();
-            IEnumerable<AppUser> users = UserManager.Users;
+            IEnumerable<AppUser> users = repository.GetUsers();
             model.BannedUsers = from user in users
                                 where user.IsBanned == true
                                 select user;
             return View("BannedUsers", model);
         }
 
-        public async Task<ActionResult> Unban(string userId = "user_id")
+        public ActionResult Unban(string userId = "user_id")
         {
-            AppUser user = await UserManager.FindByIdAsync(userId);
+            AppUser user = repository.GetUserById(userId);
             if (user != null)
             {
                 user.IsBanned = false;

@@ -230,6 +230,7 @@
     <Compile Include="Controllers\RegisterEventController.cs" />
     <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Controllers\SearchCinemaController.cs" />
+    <Compile Include="Controllers\SearchEventsController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\UserPageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -246,6 +247,7 @@
     <Compile Include="Models\RegisterCinemaModel.cs" />
     <Compile Include="Models\RegisterEventModel.cs" />
     <Compile Include="Models\RegisterUserModel.cs" />
+    <Compile Include="Models\SearchEventModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\UserPageModel.cs" />
     <Compile Include="Models\ViewTicketsModel.cs" />
@@ -275,6 +277,7 @@
     <Content Include="Views\Event\ApproveEvent.cshtml" />
     <Content Include="Views\BuyTicket\BuyTicket.cshtml" />
     <Content Include="Views\Tickets\ViewTickets.cshtml" />
+    <Content Include="Views\SearchEvents\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
