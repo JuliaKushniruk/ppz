@@ -1,44 +1,99 @@
 ﻿@model WebSite.Models.EventLikedModel
-{
-
+@{
+    ViewBag.Title = Model.Name;
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-   
-    <title>Index</title>
+    <style>
+        body {
+        padding-left: 20px;
+        padding-right: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div>
-       
-       
-            <p> <b>Кінотеатр:</b> @Html.ActionLink(@Model.Cinema, "ViewCinema", "Cinema", new { cinemaId = Model.CinemaID }, new { @class = "btn btn-default" })  </p>
-            <p> <b>Фільм:</b> @Html.ActionLink(@Model.Film, "ViewMovie", "Movie", new { movieId = Model.MovieId }, new { @class = "btn btn-default" })  </p>
-            @if (Model.IsApproved == true)
-            { <p> <b>Статус:</b> Затверджено </p>}
-            else if (Model.IsApproved == null)
-            { <p> <b>Статус:</b> Розглядається </p>}
-            else
-            {
-                { <p> <b>Статус:</b> Не Затверджено </p>}
-            }
-            <p> <b>Користувач, що запропонував:</b> @Model.Author</p>
-            <p> <b>Ціна:</b> @Model.Price грн</p>
 
-            @if (!Model.IsLiked)
-            {
-                @Html.ActionLink("LIKE", "LikeEvent", "Event", Model, new { @class = "btn btn-danger" })
-            }
-            else
-            {
-                @Html.ActionLink("DISLIKE", "DislikeEvent", "Event", Model, new { @class = "btn btn-success" })
-            }
-            <p> Кількість лайків: @Model.LikesAmount</p>
 
-        @Html.ActionLink("Buy ticket", "BuyTicket", "BuyTicket", Model, new { @class = "btn btn-success" })
+    <div class="container">
+        <div class="jumbotron jumbotron-sm" style="background-color:#339966;margin-top:2%;color:white;">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="h2" style="margin-top:0%">
+                        @Model.Name
+                    </h1>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <h3 style="line-height:20%;"><i class="fa fa-home fa-1x" style="line-height:6%;color:#339966"></i> State:</h3>
+                    @if (Model.IsApproved == true)
+                    {
+                        <h4 style="margin-top:6%;line-height:35%"><b>Approved</b></h4>
+                    }
+                    else if (Model.IsApproved == null)
+                    {
+                        <h4 style="margin-top:6%;line-height:35%"><b>On Review...</b></h4>
+                    }
+                    <br />
+                    <br />
+
+                    <h3 style="line-height:20%;"><i class="fa fa-home fa-1x" style="line-height:6%;color:#339966"></i> Cinema:</h3>
+                    <h4 style="margin-top:6%;line-height:35%">
+                        <b> @Html.ActionLink(Model.Cinema, "ViewCinema", "Cinema", new { cinemaId = Model.CinemaID }, null)</b>
+                    </h4>
+                    <br />
+                    <br />
+                    <h3 style="line-height:20%;"><i class="fa fa-home fa-1x" style="line-height:6%;color:#339966"></i> Movie:</h3>
+                    <h4 style="margin-top:6%;line-height:35%">
+                        <b> @Html.ActionLink(Model.Film, "ViewMovie", "Movie", new { movieId = Model.MovieId }, null)</b>
+                    </h4>
+                    <br />
+                    <br />
+                    <h3 style="line-height:20%;"><i class="fa fa-user fa-1x" style="line-height:6%;color:#339966"></i> Author:</h3>
+                    <a4 style="margin-top:6%;line-height:35%"><b>@Model.Author</b></a4>
+                    <br />
+                    <br />
+                    <h3 style="line-height:20%;"><i class="fa fa-user fa-1x" style="line-height:6%;color:#339966"></i> Likes:</h3>
+                    <h4 style="margin-top:6%;line-height:35%"><i class="glyphicon glyphicon-thumbs-up"></i><b>  @Model.LikesAmount</b></h4>
+                    <br />
+                    <br />
+                    <h3 style="line-height:20%;"><i class="fa fa-user fa-1x" style="line-height:6%;color:#339966"></i> Price:</h3>
+                    <h4 style="margin-top:6%;line-height:35%"><i class="glyphicon glyphicon-usd"></i><b>  @Model.Price</b></h4>
+                </div>
+                @if (!Model.IsLiked)
+                {
+                    //@Html.ActionLink("LIKE", "LikeEvent", "Event", Model, new { @class = "btn btn-danger" })
+                    <a href="@Url.Action("LikeEvent", "Event", Model, null)" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up" style="font-size: 30px;"></i></a>
+                }
+                else
+                {
+                    //@Html.ActionLink("DISLIKE", "DislikeEvent", "Event", Model, new { @class = "btn btn-success" })
+                    <a href="@Url.Action("DislikeEvent", "Event", Model, null)" class="btn btn-success"><i class="glyphicon glyphicon-thumbs-up" style="font-size: 30px;"></i></a>
+                }
+                @if (Model.IsApproved == true)
+                {
+                    <a href="@Url.Action("BuyTicket", "BuyTicket", Model, null)" class="btn btn-primary" style="font-size: 25px;">BUY TICKET</a>
+                }
+                
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    <center>
+                        <a href="@Url.Action("ViewMovie", "Movie", new { movieId = Model.MovieId }, null)">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/f/f0/From_dusk_till_dawn_poster.jpg" />
+                        </a>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

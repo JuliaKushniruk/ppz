@@ -133,7 +133,7 @@ namespace Domain.Concrete
             {
                 Cinema = cinema,
                 Movie = movie,
-                IsApproved = false,
+                IsApproved = true,
                 Price = 50,
                 Author = user.UserName,
                 Name ="Relax"

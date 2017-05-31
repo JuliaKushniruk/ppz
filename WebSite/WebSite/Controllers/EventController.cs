@@ -30,6 +30,7 @@ namespace WebSite.Controllers
             eventsToDisplay =
                 new EventLikedModel
                 {
+                    Name = even.Name,
                     EventId = even.EventId,
                     Cinema = even.Cinema.Name,
                     CinemaID = even.Cinema.CinemaId,

@@ -1,6 +1,6 @@
 ﻿@model WebSite.Models.CinemaPageModel
 @{
-
+    ViewBag.Title = Model.CurrentCinema.Name;
 }
 @using WebSite.HtmlHelpers;
 
@@ -8,8 +8,6 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Cinema</title>
     <style>
                 body { 
     padding-left: 20px;
